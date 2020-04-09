@@ -1,6 +1,4 @@
 from browser import document, html, console
-document <= html.H1("Olar jovis :)")
+# document["nav-logo"].text = "Olar Jovis :)"
 
-
-def batata():
-    console.log('blah')
+test = "oi"
