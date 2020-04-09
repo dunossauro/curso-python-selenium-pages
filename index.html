@@ -2,45 +2,17 @@
 <head>
   <meta charset="utf-8"/>
   <title> Olar </title>
-  <script type="text/javascript" src="assets/brython.js"></script>
-  <script type="text/javascript" src="assets/brython_stdlib.js"></script>
-  <link rel="stylesheet" href="assets/normalize.css" />
-  <link rel="stylesheet" href="assets/terminal.min.css" />
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
-<body onload="brython()" class="terminal">
-  <script type="text/python">
-    from scripts.index import test
-    test
+  <script type="text/javascript" src="/js/brython.js"></script>
+  <script type="text/javascript" src="/js/brython_stdlib.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css" />
+  <link rel="stylesheet" href="/css/terminal.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="text/python", class="terminal">
+    from scripts.page import page_load
+    page_load()
   </script>
-    <div class="container">
-  <div class="terminal-nav">
-    <header class="terminal-logo">
-      <div class="logo terminal-prompt">
-	<a href="#" class="no-style">Olar Jovis :)</a>
-      </div>
-    </header>
-    <nav class="terminal-menu">
-      <ul>
-        <li><a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a></li>
-        <li><a class="menu-item active" target="_blank" href="https://apoia.se/livedepython">apoia.se</a></li>
-        <li><a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium/">Curso</a></li>
-        <li><a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a></li>
-      </ul>
-    </nav>  </div>
-</div>
-  <div class="components components-grid">
-    <aside>
-      lado
-    </aside>
-    <main>
-      <section>
-	blah
-      </section>
-      <section>
-	blah
-      </section>
-    </main>
-  </div>
+</head>
+
+<body onload="brython()" class="terminal">
 </body>
 <html>

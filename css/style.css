@@ -1,0 +1,43 @@
+:root {
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --background-color: #222225;
+    --font-color: #e8e9ed;
+    --invert-font-color: #222225
+    --invert-font-color: #222225;
+    --primary-color: #62c4ff;
+    --secondary-color: #a3abba;
+    --tertiary-color: #a3abba;
+    --error-color: #ff3c74;
+    --progress-bar-background: #3f3f44;
+    --progress-bar-fill: #62c4ff;
+    --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+      serif;
+    --input-style: solid;
+}
+
+.components-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr .3fr;
+    grid-template-rows: 10vh 85vh 5vh;
+    grid-template-areas: "header header header"
+                         "aside main ."
+                         "footer footer footer";
+}
+
+header {
+    grid-area: header;
+}
+
+footer {
+    grid-area: footer;
+}
+
+main {
+    grid-area: main;
+}
+
+aside {
+    grid-area: aside;
+}
