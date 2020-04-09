@@ -1,2 +1,3 @@
 # curso-python-selenium-pages
-Páginas usadas para testes durante o curso
+
+site: https://curso-python-selenium.netlify.com/
