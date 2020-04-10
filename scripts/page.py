@@ -6,6 +6,7 @@ from browser.html import (
 )
 
 def page_structure():
+    """Monta a estrutura base da página."""
     page = DIV(Class='components-grid', id='grid')
     page <= HEADER(id='header')
     page <= ASIDE(id='aside')
@@ -21,12 +22,13 @@ def main():
     document['main'] <= P('main')
 
 def header():
+    """Cria navbar no header com o logo e os links."""
     container = DIV(Class='container')
     terminal_nav = DIV(Class='terminal-nav')
     header = DIV(Class='terminal-logo', id='header')
     terminal_menu = NAV(Class='terminal-menu')
     logo = DIV(Class='logo terminal-prompt')
-    link_logo = A('Olar jovis :)', Class='no-style')
+    link_logo = A('Olar Jovis :)', Class='no-style')
     link_logo.link = '#'
 
     ul = UL()
@@ -34,6 +36,7 @@ def header():
     apoiase = nav_element('Apoia.se', 'https://apoia.se/livedepython')
     curso = nav_element('Curso', 'https://dunossauro.github.io/curso-python-selenium')
     cdc = nav_element('CDC', 'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md')
+
     logo <= link_logo
     header <= logo
     ul <= youtube + apoiase + curso + cdc
@@ -45,19 +48,28 @@ def header():
 
 
 def footer():
-    document['footer'] <= P('footer')
+    ...
 
 def page_load():
+    """Monta e estrutura da página."""
     page_structure()
     header()
     aside()
     main()
     footer()
+
+
+def nav_element(text, link):
+    """
+    Cria links para uma lista.
     
-def nav_element(name, link):
+    Parans:
+       - text: texto que aparecerá no link
+       - link: href
+    """
     li_element = LI()
 
-    element = A(name, Class='menu-item')
+    element = A(text, Class='menu-item')
     element.target = '_blank'
     element.href = link
 
