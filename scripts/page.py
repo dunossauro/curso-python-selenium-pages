@@ -53,7 +53,7 @@ def header():
     terminal_menu = NAV(Class='terminal-menu')
     logo = DIV(Class='logo terminal-prompt')
     link_logo = A('Olar Jovis :)', Class='no-style')
-    link_logo.link = '#'
+    link_logo.href = '/'
 
     ul = UL()
     youtube = nav_element('Youtube', 'https://www.youtube.com/eduardomendes')
