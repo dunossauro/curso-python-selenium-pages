@@ -21,6 +21,9 @@ def make_page(page_name, jinja_vars) -> NoReturn:
 
     Essa funão retorna a criação de um arquivo no path `site`
 
+    Se ouver a chave `brython_file` dentro de `jinja_vars`
+        o arquivo será aberto e inserido na chave `brython`
+
     Example:
     -------
     >>> jinja_vars = {'my_jinja_param_1': 'foo', my_jinja_param_2: 'bar'}
@@ -28,6 +31,11 @@ def make_page(page_name, jinja_vars) -> NoReturn:
 
     """
     template = _select_template('page_template')
+
+    brython_file = jinja_vars.get('brython_file')
+    if brython_file and exists(f'aulas/{brython_file}.py'):
+        with open(f'aulas/{jinja_vars["brython_file"]}.py') as f:
+            jinja_vars['brython'] = f.read()
 
     with open(f'site/{page_name}.html', 'w') as f:
         f.write(template.render(jinja_vars))

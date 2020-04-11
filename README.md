@@ -12,13 +12,14 @@ Jinja2: https://jinja.palletsprojects.com/
 
 
 ## Estrutura do projeto
-| Path            | o que tem dentro | observação                         |
-| --------------- | ---------------- | ---------------------------------- |
-| css             | Arquivos .css    |                                    |
-| js              | Arquivos .js     |                                    |
-| scripts         | Arquivos .py     | código bryhton                     |
-| templates       | Arquivos .html   | templates do jinja                 |
-| template_engine | Arquivos .py     | código python para gerar templates |
+| Path            | o que tem dentro | observação                               |
+| --------------- | ---------------- | ---------------------------------------- |
+| css             | Arquivos .css    |                                          |
+| js              | Arquivos .js     |                                          |
+| scripts         | Arquivos .py     | código bryhton                           |
+| templates       | Arquivos .html   | templates do jinja                       |
+| template_engine | Arquivos .py     | código python para gerar templates       |
+| aulas           | Arquivos .py     | código usado para gerar a página da aula |
 
 
 ## como buildar o projeto
