@@ -17,10 +17,12 @@ Example:
 
 """
 from browser import document
-from browser.html import DIV, LABEL, INPUT, FIELDSET, LEGEND, BUTTON, FORM
+from browser.html import DIV, LABEL, INPUT, FIELDSET, LEGEND, FORM
 
 
-def _create_input(name, type, label):
+def _create_input(
+    name, type, label='', Class='', text='', value='', onclick=''
+):
     """
     Cria um input completo.
 
@@ -32,6 +34,9 @@ def _create_input(name, type, label):
         name: id do input
         type: tipo do input
         label: texto do label
+        Class: classe CSS
+        text: texto do componente
+        value: valur do componente
 
     Retorna uma div do grupo com o elemto inserido na div.
 
@@ -46,26 +51,22 @@ def _create_input(name, type, label):
 
     """
     d = DIV(Class='form-group')
-    d <= LABEL(f'{label}: ', For=name)
-    d <= INPUT(id=name, type=type)
+    d <= LABEL(f'{label}: ' if label else '', For=name)
+    d <= INPUT(text, id=name, name=name, type=type, Class=Class, value=value)
     return d
 
 
 def _create_form(things: dict):
     """Cria um form basead em uma especificação de dicionário."""
-    form = FIELDSET()
-    form <= LEGEND(things['legend'])
-    form <= FORM()
+    fieldset = FIELDSET()
+    fieldset <= LEGEND(things['legend'])
+    form = FORM(**things['form'])
 
     for input_ in things['inputs']:
         form <= _create_input(**input_)
 
-    b = BUTTON(**things['button'])
-    b.text = things['button']['text']
-
-    form <= b
-
-    return form
+    fieldset <= form
+    return fieldset
 
 
 def form(form_spec: dict):
