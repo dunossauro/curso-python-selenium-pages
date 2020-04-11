@@ -1,4 +1,4 @@
-# curso-python-selenium-pages
+# Páginas do curso de python com selenium
 
 site: https://curso-python-selenium.netlify.com/
 
