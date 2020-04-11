@@ -51,7 +51,7 @@ def _create_input(
 
     """
     d = DIV(Class='form-group')
-    d <= LABEL(f'{label}: ' if label else '', For=name)
+    d <= LABEL(f'{label}: ' if label else '', For=name, id=f'l{name}')
     d <= INPUT(text, id=name, name=name, type=type, Class=Class, value=value)
     return d
 
