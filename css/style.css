@@ -19,7 +19,7 @@
 
 .components-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr .3fr;
+    grid-template-columns: .4fr 2fr .4fr;
     grid-template-rows: 10vh 85vh 5vh;
     grid-template-areas: "header header header"
                          "aside main ."
@@ -31,7 +31,7 @@ header {
 }
 
 footer {
-    grid-area: footer;
+  grid-area: footer;
 }
 
 main {
