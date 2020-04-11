@@ -20,10 +20,22 @@
 .components-grid {
     display: grid;
     grid-template-columns: .4fr 2fr .4fr;
-    grid-template-rows: 10vh 85vh 5vh;
+    grid-template-rows: 10vh 65vh 20vh 5vh;
+    grid-row-gap: 1em;
     grid-template-areas: "header header header"
                          "aside main ."
+                         "aside result ."
                          "footer footer footer";
+
+}
+
+
+@media (max-height: 600px) {
+  .result{display: none;}
+}
+
+.result {
+  grid-area: result;
 }
 
 header {

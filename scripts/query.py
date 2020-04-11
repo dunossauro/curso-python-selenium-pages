@@ -1,0 +1,19 @@
+from browser import document
+from browser.html import TEXTAREA, FIELDSET, DIV, LEGEND
+
+
+def result():
+    result_fildset = FIELDSET(Class='result')
+    result_fildset <= LEGEND('Resultado')
+    result_fildset <= DIV(id='result')
+
+    document['grid'] <= result_fildset
+
+
+def get_query_string(fields: list) -> dict:
+    fields = {field: document.query.getvalue(field) for field in fields}
+    if any(fields.values()):
+        textarea = TEXTAREA()
+        textarea.text = fields
+        result()
+        document['result'] <= textarea
