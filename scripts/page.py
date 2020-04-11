@@ -1,29 +1,53 @@
-from browser import document
-from browser.html import (
-    HEADER, FOOTER, MAIN, ASIDE,
-    NAV, DIV,
-    P, A, UL, LI
-)
+"""
+Módulo repsonsáve pela implementação default de todas as páginas.
 
-def page_structure():
-    """Monta a estrutura base da página."""
-    page = DIV(Class='components-grid', id='grid')
-    page <= HEADER(id='header')
-    page <= ASIDE(id='aside')
-    page <= MAIN(id='main')
-    page <= FOOTER(id='footer')
-    document <= page
+As funções, footer, header, aside e main são carregas por padrão em
+todas as páginas do projeto, baseado na implementação do componente
+`templates/components/bryhton.html`
+
+Example:
+-------
+>>> from scripts.page import page_load
+>>> page_load()  # carrega todos os elementos
+
+"""
+from browser import document
+from browser.html import NAV, DIV, A, UL, LI
+
+
+def page_load():
+    """Agrupa todos os elementos em uma única chamada do brython."""
+    header()
+    aside()
+    main()
+    footer()
+
+
+def footer():
+    """Footer que será usado em todas as páginas."""
+    ...
 
 
 def aside():
-    document['aside'] <= P('aside')
+    """Aside que será usado em todas as páginas."""
+    ...
+
 
 def main():
-    document['main'] <= P('main')
+    """Main que será usado em todas as páginas."""  # NOQA
+    ...
+
 
 def header():
-    """Cria navbar no header com o logo e os links."""
-    container = DIV(Class='container')
+    """
+    Footer que será usado em todas as páginas.
+
+    A implementação desse header está baseada na implementação do terminal CSS
+
+    Foi feita uma cópia do header princial e resontruíuda em bryhton.
+    link: https://terminalcss.xyz/dark/#Navigation
+    """
+    div_container = DIV(Class='container')
     terminal_nav = DIV(Class='terminal-nav')
     header = DIV(Class='terminal-logo', id='header')
     terminal_menu = NAV(Class='terminal-menu')
@@ -34,8 +58,13 @@ def header():
     ul = UL()
     youtube = nav_element('Youtube', 'https://www.youtube.com/eduardomendes')
     apoiase = nav_element('Apoia.se', 'https://apoia.se/livedepython')
-    curso = nav_element('Curso', 'https://dunossauro.github.io/curso-python-selenium')
-    cdc = nav_element('CDC', 'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md')
+    curso = nav_element(
+        'Curso', 'https://dunossauro.github.io/curso-python-selenium'
+    )
+    cdc = nav_element(
+        'CDC',
+        'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md', # NOQA
+    )
 
     logo <= link_logo
     header <= logo
@@ -43,26 +72,14 @@ def header():
     terminal_menu <= ul
     terminal_nav <= header
     terminal_nav <= terminal_menu
-    container <= terminal_nav
-    document['header'] <= container
-
-
-def footer():
-    ...
-
-def page_load():
-    """Monta e estrutura da página."""
-    page_structure()
-    header()
-    aside()
-    main()
-    footer()
+    div_container <= terminal_nav
+    document['header'] <= div_container
 
 
 def nav_element(text, link):
     """
     Cria links para uma lista.
-    
+
     Parans:
        - text: texto que aparecerá no link
        - link: href
