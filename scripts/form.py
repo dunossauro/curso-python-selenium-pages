@@ -21,7 +21,13 @@ from browser.html import DIV, LABEL, INPUT, FIELDSET, LEGEND, FORM
 
 
 def _create_input(
-    name, type, label='', Class='', text='', value='', onclick=''
+    name,
+    type,
+    label='',
+    Class='',
+    text='',
+    value='',
+    required=False,
 ):
     """
     Cria um input completo.
@@ -37,6 +43,7 @@ def _create_input(
         Class: classe CSS
         text: texto do componente
         value: valur do componente
+        required: input validator required
 
     Retorna uma div do grupo com o elemto inserido na div.
 
@@ -52,7 +59,15 @@ def _create_input(
     """
     d = DIV(Class='form-group')
     d <= LABEL(f'{label}: ' if label else '', For=name, id=f'l{name}')
-    d <= INPUT(text, id=name, name=name, type=type, Class=Class, value=value)
+    d <= INPUT(
+        text,
+        id=name,
+        name=name,
+        type=type,
+        Class=Class,
+        value=value,
+        required=required,
+    )
     return d
 
 

@@ -2,20 +2,23 @@ from browser import bind, document, console
 from scripts.form import form
 from scripts.query import get_query_string
 
+inputs = [
+    {'name': 'nome', 'type': 'text', 'label': 'nome'},
+    {'name': 'email', 'type': 'email', 'label': 'email'},
+    {'name': 'senha', 'type': 'password', 'label': 'senha', 'required': True},
+    {
+        'name': 'btn',
+        'type': 'submit',
+        'Class': 'btn btn-primary btn-block',
+        'value': 'Enviar!',
+    },
+]
+
+
 login_form = {
     'form': {'action': '#', 'method': 'get', 'autocomplete': 'off'},
     'legend': 'Faça seu cadastro',
-    'inputs': [
-        {'name': 'nome', 'type': 'text', 'label': 'nome'},
-        {'name': 'email', 'type': 'email', 'label': 'email'},
-        {'name': 'senha', 'type': 'password', 'label': 'senha'},
-        {
-            'name': 'a',
-            'type': 'submit',
-            'Class': 'btn btn-primary btn-block',
-            'value': 'Enviar!',
-        },
-    ],
+    'inputs': inputs,
 }
 
 get_query_string(['nome', 'email', 'senha'])
