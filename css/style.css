@@ -34,6 +34,12 @@
   .result{display: none;}
 }
 
+@media (max-width: 480px) {
+  .terminal-menu {
+    display: none;
+  }
+}
+
 .result {
   grid-area: result;
 }
