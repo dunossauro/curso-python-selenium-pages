@@ -1,6 +1,8 @@
 # stuff
 venv/
 site/
+aula*.md
+*.log
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
