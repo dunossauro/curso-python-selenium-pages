@@ -32,9 +32,11 @@ def make_page(page_name, jinja_vars) -> NoReturn:
     """
     template = _select_template('page_template')
 
+    path = jinja_vars.get('path', '')
+
     brython_file = jinja_vars.get('brython_file')
-    if brython_file and exists(f'aulas/{brython_file}.py'):
-        with open(f'aulas/{jinja_vars["brython_file"]}.py') as f:
+    if brython_file and exists(f'paginas/{path}/{brython_file}.py'):
+        with open(f'paginas/{path}/{jinja_vars["brython_file"]}.py') as f:
             jinja_vars['brython'] = f.read()
 
     with open(f'site/{page_name}.html', 'w') as f:

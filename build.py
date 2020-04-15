@@ -2,5 +2,10 @@ from template_engine import clean_and_copy, make_page
 
 clean_and_copy()
 
-make_page('index', {'title': 'Olar', 'brython_file': 'index'})
-make_page('aula_3', {'title': 'Olar', 'brython_file': 'aula_3'})
+make_page(
+    'index', {'title': 'Olar', 'path': 'paginas', 'brython_file': 'index'}
+)
+
+make_page(
+    'aula_03', {'title': 'Aula 03', 'type': 'aulas', 'brython_file': 'aula_03'}
+)
