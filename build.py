@@ -17,6 +17,28 @@ make_page(
     },
 )
 
+make_page(
+    'exercicio_01',
+    {
+        'raw': True,
+        'title': 'Exercício 01',
+        'type': 'exercicios',
+        'path': 'exercicios',
+        'brython_file': 'exercicio_01',
+    },
+)
+
+
+make_page(
+    'exercicio_02',
+    {
+        'raw': True,
+        'title': 'Exercício 02',
+        'type': 'exercicios',
+        'path': 'exercicios',
+        'brython_file': 'exercicio_02',
+    },
+)
 
 make_page(
     'aula_04',
