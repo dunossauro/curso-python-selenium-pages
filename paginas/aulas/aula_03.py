@@ -1,55 +1,25 @@
-from browser import bind, document, console
-from scripts.form import form
-from scripts.query import get_query_string
+from browser import document, html
+from browser.local_storage import storage
 
-inputs = [
-    {'name': 'nome', 'type': 'text', 'label': 'nome'},
-    {'name': 'email', 'type': 'email', 'label': 'email'},
-    {'name': 'senha', 'type': 'password', 'label': 'senha', 'required': True},
-    {
-        'name': 'btn',
-        'type': 'submit',
-        'Class': 'btn btn-primary btn-block',
-        'value': 'Enviar!',
-    },
-]
+storage['contagem'] = '0'
 
 
-login_form = {
-    'form': {'action': '#', 'method': 'get', 'autocomplete': 'off'},
-    'legend': 'Faça seu cadastro',
-    'inputs': inputs,
-}
-
-get_query_string(['nome', 'email', 'senha'])
-form(login_form)
+def increment(_):
+    """Pega o valor no storage, incrimenta e adiciona no document."""
+    storage['contagem'] = str(int(storage['contagem']) + 1)
+    document <= html.P(storage['contagem'])
 
 
-@bind('#nome', 'focus')
-def focus(ev):
-    document['lnome'].text = 'Não vale mentir o nome'
+def page():
+    """Estrutura inicial da página.
+
+    Link + valor inicial em P
+    """
+    document <= html.A('minha ancora', id='ancora', href='#')
+    document <= html.P(storage['contagem'])
 
 
-@bind('#nome', 'blur')
-def focus(ev):
-    document['lnome'].text = 'nome:'
+page()
 
-
-@bind('#email', 'focus')
-def focus(ev):
-    document['lemail'].text = 'Esse email é mesmo válido?'
-
-
-@bind('#email', 'blur')
-def focus(ev):
-    document['lemail'].text = 'email:'
-
-
-@bind('#senha', 'focus')
-def focus(ev):
-    document['lsenha'].text = 'Já falei pra não colocar 1234'
-
-
-@bind('#senha', 'blur')
-def focus(ev):
-    document['lsenha'].text = 'senha:'
+# executa increment quando clicamos no link
+document['ancora'].bind('click', increment)
