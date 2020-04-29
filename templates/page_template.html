@@ -4,11 +4,13 @@
   {% include 'components/brython.html' %}
   </head>
 <body onload="brython()" class="terminal">
-  <div class="components-grid" id="grid">
-    {% include 'components/header.html' %}
-    {% include 'components/main.html' %}
-    {% include 'components/aside.html' %}
-    {% include 'components/footer.html' %}
-  </div>
+  {% if not raw %}
+    <div class="components-grid" id="grid">
+      {% include 'components/header.html' %}
+      {% include 'components/main.html' %}
+      {% include 'components/aside.html' %}
+      {% include 'components/footer.html' %}
+    </div>
+  {% endif %}
 </body>
 <html>

@@ -7,5 +7,23 @@ make_page(
 )
 
 make_page(
-    'aula_03', {'title': 'Aula 03', 'type': 'aulas', 'brython_file': 'aula_03'}
+    'aula_03',
+    {
+        'raw': True,
+        'title': 'Aula 03',
+        'type': 'aulas',
+        'path': 'aulas',
+        'brython_file': 'aula_03',
+    },
+)
+
+
+make_page(
+    'aula_04',
+    {
+        'title': 'Aula 04',
+        'type': 'aulas',
+        'path': 'aulas',
+        'brython_file': 'aula_04',
+    },
 )

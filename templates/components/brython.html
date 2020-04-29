@@ -1,6 +1,8 @@
 <script type="text/python"class="terminal">
+{% if not raw %}
 from scripts.page import page_load
 page_load()
+{% endif %}
 
 {{brython}}
 </script>
