@@ -10,16 +10,11 @@ def increment(_):
     document <= html.P(storage['contagem'])
 
 
-def page():
-    """Estrutura inicial da página.
+"""Estrutura inicial da página.
 
-    Link + valor inicial em P
-    """
-    document <= html.A('minha ancora', id='ancora', href='#')
-    document <= html.P(storage['contagem'])
-
-
-page()
-
+Link + valor inicial em P
+"""
+document <= html.A('minha ancora', id='ancora', href='#')
+document <= html.P(storage['contagem'])
 # executa increment quando clicamos no link
 document['ancora'].bind('click', increment)
