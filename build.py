@@ -41,6 +41,17 @@ make_page(
 )
 
 make_page(
+    'exercicio_03',
+    {
+        'title': 'Exercício 03',
+        'type': 'exercicios',
+        'path': 'exercicios',
+        'brython_file': 'exercicio_03',
+    },
+)
+
+
+make_page(
     'aula_04',
     {
         'title': 'Aula 04',
@@ -49,3 +60,25 @@ make_page(
         'brython_file': 'aula_04',
     },
 )
+
+# stuff pages
+from os import listdir
+path = 'paginas/stuff_pages'
+for page in listdir(path):
+    make_page(page.replace('.py', ''), {
+        'title': page.replace('py', 'html'),
+        'type': page,
+        'path': 'stuff_pages',
+        'brython_file': page.replace('.py', ''),
+        }
+    )
+
+# make_page(
+#     'aula_05',
+#     {
+#         'title': 'Aula 05',
+#         'type': 'aulas',
+#         'path': 'aulas',
+#         'brython_file': 'aula_05',
+#     },
+# )

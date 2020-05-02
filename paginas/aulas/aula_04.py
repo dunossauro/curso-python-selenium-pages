@@ -1,55 +1,18 @@
-from browser import bind, document
-from scripts.form import form
-from scripts.query import get_query_string
-
-inputs = [
-    {'name': 'nome', 'type': 'text', 'label': 'nome'},
-    {'name': 'email', 'type': 'email', 'label': 'email'},
-    {'name': 'senha', 'type': 'password', 'label': 'senha', 'required': True},
-    {
-        'name': 'btn',
-        'type': 'submit',
-        'Class': 'btn btn-primary btn-block',
-        'value': 'Enviar!',
-    },
-]
+from browser import html, document
+from scripts.links import anchor_in_list
 
 
-login_form = {
-    'form': {'action': '#', 'method': 'get', 'autocomplete': 'off'},
-    'legend': 'Faça seu cadastro',
-    'inputs': inputs,
-}
-
-get_query_string(['nome', 'email', 'senha'])
-form(login_form)
+lista_exercicios = html.UL()
+for n in range(1, 11):
+    lista_exercicios <= anchor_in_list(f'Exercício {n}', f'exercicio_0{n}.html')
 
 
-@bind('#nome', 'focus')
-def focus(ev):
-    document['lnome'].text = 'Não vale mentir o nome'
+lista_aulas = html.UL()
+for n in range(3, 10):
+    lista_aulas <= anchor_in_list(f'Aula {n}', f'aula_0{n}.html')
 
+document['aside'] <= html.H1('Lista de Aulas')
+document['aside'] <= lista_aulas
 
-@bind('#nome', 'blur')
-def focus(ev):
-    document['lnome'].text = 'nome:'
-
-
-@bind('#email', 'focus')
-def focus(ev):
-    document['lemail'].text = 'Esse email é mesmo válido?'
-
-
-@bind('#email', 'blur')
-def focus(ev):
-    document['lemail'].text = 'email:'
-
-
-@bind('#senha', 'focus')
-def focus(ev):
-    document['lsenha'].text = 'Já falei pra não colocar 1234'
-
-
-@bind('#senha', 'blur')
-def focus(ev):
-    document['lsenha'].text = 'senha:'
+document['main'] <= html.H1('Lista de exercícios')
+document['main'] <= lista_exercicios
