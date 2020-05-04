@@ -1,8 +1,8 @@
 from typing import NoReturn
 from jinja2 import FileSystemLoader, Environment
 from os.path import abspath, exists
-from os import mkdir
-from shutil import copytree, rmtree
+from os import mkdir, listdir
+from shutil import copytree, rmtree, copy
 
 
 def _select_template(template):
@@ -43,7 +43,11 @@ def make_page(page_name, jinja_vars) -> NoReturn:
         f.write(template.render(jinja_vars))
 
 
-def clean_and_copy(build_path='site', paths_to_copy=['css', 'js', 'scripts']):
+def clean_and_copy(
+    build_path='site',
+    paths_to_copy=['css', 'js', 'scripts'],
+    raw_pages='raw_pages'
+):
     """Limpa o `build_path` e o cria de novo e adiciona os `paths_to_copy`."""
     if exists(build_path):
         rmtree(build_path)
@@ -52,3 +56,6 @@ def clean_and_copy(build_path='site', paths_to_copy=['css', 'js', 'scripts']):
 
     for path in paths_to_copy:
         copytree(f'{path}', f'./{build_path}/{path}/')
+
+    for file in listdir(raw_pages):
+        copy(f'./{raw_pages}/{file}', f'./{build_path}')
