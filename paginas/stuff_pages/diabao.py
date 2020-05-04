@@ -1,18 +1,6 @@
-from browser import document,  html
+from browser import document, html
+from scripts.arts import art
 
-document['main'] <= html.PRE(r'''
-
-Sou o Diabão do erro
-
-   ,    ,    /\   /\
-  /( /\ )\  _\ \_/ /_
-  |\_||_/| < \_   _/ >
-  \______/  \|0   0|/
-    _\/_   _(_  ^  _)_
-   ( () ) /`\|V"""V|/`\
-     {}   \  \_____/  /
-     ()   /\   )=(   /\
-     {}  /  \_/\=/\_/  \
-
-E você errou
-''')
+document['main'] <= art(
+    'diabo', 'Sou o Diabão do erro', 'E você errou'
+)

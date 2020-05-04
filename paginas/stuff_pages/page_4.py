@@ -1,6 +1,6 @@
 from browser import html, document
 from browser.local_storage import storage
-from scripts.links import anchor_in_list
+from scripts.arts import art
 
 
 if storage['local'] != 'fim':
@@ -8,41 +8,8 @@ if storage['local'] != 'fim':
     document['main'] <= html.P(
         'O diabão vai te pegar, dê refresh para pedir ajuda'
     )
-    document['main'] <= html.PRE(r'''
-
-    Sou o Diabão e você perdeu
-
-       ,    ,    /\   /\
-      /( /\ )\  _\ \_/ /_
-      |\_||_/| < \_   _/ >
-      \______/  \|0   0|/
-        _\/_   _(_  ^  _)_
-       ( () ) /`\|V"""V|/`\
-         {}   \  \_____/  /
-         ()   /\   )=(   /\
-         {}  /  \_/\=/\_/  \
-
-    ''')
+    document['main'] <= art('diabo', 'Sou o Diabão e você perdeu', '')
 else:
-    document['main'] <= html.PRE(r'''
-
-    Sou o unicórnio da salvação
-
-                   \
-                    \\
-                     \%,     ,'     , ,.
-                      \%\,';/J,";";";;,,.
-         ~.------------\%;((`);)));`;;,.,-----------,~
-        ~~:           ,`;@)((;`,`((;(;;);;,`         :~~
-       ~~ :           ;`(@```))`~ ``; );(;));;,      : ~~
-      ~~  :            `X `(( `),    (;;);;;;`       :  ~~
-     ~~~~ :            / `) `` /;~   `;;;;;;;);,     :  ~~~~
-    ~~~~  :           / , ` ,/` /     (`;;(;;;;,     : ~~~~
-      ~~~ :          (o  /]_/` /     ,);;;`;;;;;`,,  : ~~~
-       ~~ :           `~` `~`  `      ``;,  ``;" ';, : ~~
-        ~~:                             `'   `'  `'  :~~
-         ~`-----------------------------------------`~
-
-
-    E você ganhou esse jogo
-    ''')
+    document['main'] <= art(
+        'unicornio', 'Sou o unicórnio da salvação', 'E você ganhou esse jogo'
+    )
