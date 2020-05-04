@@ -3,6 +3,7 @@ venv/
 site/
 aula*.md
 *.log
+exemplo*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
