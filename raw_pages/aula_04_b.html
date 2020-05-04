@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>pushState and popstate</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <style media="screen">
+          .boxes {
+              display: flex;
+          }
+
+          .box {
+              --box-color: black;
+              width: 200px;
+              height: 200px;
+              margin: 20px;
+              box-sizing: border-box;
+              display: block;
+              border-radius: 2px;
+              cursor: pointer;
+              color: white;
+              background-color: var(--box-color);
+              border: 5px solid var(--box-color);
+              font-size: 30px;
+              font-family: sans-serif;
+              font-weight: bold;
+              text-align: center;
+              line-height: 200px;
+              transition: all 0.2s ease-out;
+          }
+
+          .box:hover {
+              background-color: transparent;
+              color: black;
+          }
+
+          .box.selected {
+              transform: scale(1.2);
+          }
+
+          #box-1 {
+              --box-color: red;
+          }
+
+          #box-2 {
+              --box-color: green;
+          }
+
+          #box-3 {
+              --box-color: blue;
+          }
+
+          #box-4 {
+              --box-color: black;
+          }
+
+        </style>
+    </head>
+    <body>
+        <div class="boxes">
+            <div class="box" id="box-1">um</div>
+            <div class="box" id="box-2">dois</div>
+            <div class="box" id="box-3">tres</div>
+            <div class="box" id="box-4">quatro</div>
+        </div>
+        <script type="text/javascript">
+    let boxes = Array.from(document.getElementsByClassName('box'));
+
+    function selectBox (id) {
+        boxes.forEach(b => {
+            b.classList.toggle('selected', b.id === id);
+        });
+    }
+
+    boxes.forEach(b => {
+        let id = b.id;
+        b.addEventListener('click', e => {
+            history.pushState({id}, `Selected: ${id}`, `./selected=${id}`)
+            selectBox(id);
+        });
+    });
+
+    window.addEventListener('popstate', e => {
+        selectBox(e.state.id);
+    });
+
+    history.replaceState({id: null}, 'Default state', './');
+
+    </script>
+  </body>
+</html>
