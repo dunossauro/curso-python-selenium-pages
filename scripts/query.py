@@ -10,10 +10,11 @@ def result():
     document['grid'] <= result_fildset
 
 
-def get_query_string(fields: list) -> dict:
+def get_query_string(fields: list, where='result') -> dict:
     fields = {field: document.query.getvalue(field) for field in fields}
     if any(fields.values()):
         textarea = TEXTAREA()
         textarea.text = fields
-        result()
-        document['result'] <= textarea
+        if where == 'result':
+            result()
+        document[where] <= textarea

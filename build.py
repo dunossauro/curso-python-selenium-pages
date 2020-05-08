@@ -61,6 +61,16 @@ make_page(
     },
 )
 
+make_page(
+    'exercicio_04',
+    {
+        'title': 'Exercício 04',
+        'type': 'exercicios',
+        'path': 'exercicios',
+        'brython_file': 'exercicio_04',
+    },
+)
+
 # stuff pages
 from os import listdir
 path = 'paginas/stuff_pages'
