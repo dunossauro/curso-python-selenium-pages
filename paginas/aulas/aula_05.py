@@ -7,7 +7,6 @@ inputs = [
     {'name': 'email', 'type': 'email', 'label': 'Email'},
     {'name': 'senha', 'type': 'password', 'label': 'Senha'},
     {'name': 'telefone', 'type': 'text', 'label': 'Telefone'},
-    {'name': 'genero', 'type': 'text', 'label': 'Gênero que se identifica'},
     {
         'name': 'btn',
         'type': 'submit',
@@ -24,6 +23,6 @@ login_form = {
 }
 
 get_query_string(
-    ['nome', 'email', 'senha', 'telefone', 'genero']
+    ['nome', 'email', 'senha', 'telefone']
 )
 form(login_form)
