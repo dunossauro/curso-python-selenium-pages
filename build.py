@@ -73,12 +73,12 @@ for page in listdir(path):
         }
     )
 
-# make_page(
-#     'aula_05',
-#     {
-#         'title': 'Aula 05',
-#         'type': 'aulas',
-#         'path': 'aulas',
-#         'brython_file': 'aula_05',
-#     },
-# )
+make_page(
+    'aula_05',
+    {
+        'title': 'Aula 05',
+        'type': 'aulas',
+        'path': 'aulas',
+        'brython_file': 'aula_05',
+    },
+)
