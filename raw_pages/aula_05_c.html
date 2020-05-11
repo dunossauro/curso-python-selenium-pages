@@ -1,40 +1,27 @@
 
-
-
-<html >
+<html>
   <head>
-    <title>Bem vindo a Jamaica!</title>
-    <style media="screen">
-      .borda-vermelha {
-        border: 3px;
-        border-style: solid;
-        border-color: red;
-      }
-      .fonte-branca {
-        color: white;
-      }
-      .fundo-verde{
-        background-color: green;
-      }
-      .fundo-preto {
-        background-color: black;
-      }
-      #amarelo6 {
-        color: black;
-        background-color: yellow;
-      }
-      #amarelo5 {
-        background-color: yellow;
-      }
-    </style>
+    <meta>
+    <title>Meu formulário</title>
   </head>
   <body>
-    <h1 class="borda-vermelha">Bem vindo a Jamaica!</h1>
-    <p class="fonte-branca fundo-preto">Linha 1</p>
-    <p class="fonte-branca fundo-preto">Linha 2</p>
-    <p class="fonte-branca fundo-verde">Linha 3</p>
-    <p class="fonte-branca fundo-verde">Linha 4</p>
-    <p id="amarelo5">Linha 5</p>
-    <p id="amarelo6">Linha 6</p>
+    <h1>Promoçao Selenium Cinemas</h1>
+    <p>Promoçao para o Oscar 2020. Valendo 1 ano de cinema grátis</p>
+    <label for="filme">O melhor filme do ano?</label>
+    <br>
+    <input type="text" name="filme">
+    <br>
+    <label for="email">Qual o seu email?</label>
+    <br>
+    <input type="email" name="filme" placeholder="xxxx@xxx.xx.xx">
+    <br>
+    <label for="telefone">Qual o seu telefone?</label>
+    <br>
+    <input type="text"
+           name="telefone"
+           pattern="\(0\d\d\)\d{4,5}-?\d{4}"
+           placeholder="(xxx)xxxxx-xxx">
+    <br>
+    <input type="submit" name="enviar" value="Enviar">
   </body>
 </html>
