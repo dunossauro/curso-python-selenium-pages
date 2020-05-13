@@ -1,0 +1,165 @@
+<html lang="pt-BR">
+  <head>
+    <title>Formulários</title>
+    <meta charset="utf-8">
+    <style media="screen">
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.2fr 1fr;
+        gap: 3px 3px;
+        grid-template-areas: "header header"
+                             "l0c0 l0c1"
+                             "l1c0 l1c1"
+                             "query query";
+      }
+
+      header {
+        grid-area: header;
+      }
+      .query {
+        grid-area: query;
+      }
+      .form-l0c0 {
+          grid-area: l0c0;
+          background-color: tomato;
+      }
+      .form-l0c1 {
+          grid-area: l0c1;
+          background-color: green;
+      }
+      .form-l1c0 {
+          grid-area: l1c0;
+          background-color: orange;
+      }
+      .form-l1c1 {
+          grid-area: l1c1;
+          background-color: black;
+          color: white;
+      }
+
+      * {
+        font-family: "Monospace", Times, serif;
+        align-self: center;
+      }
+
+      input, textarea {
+         width:100%
+      }
+
+      label {
+        color: white;
+        font-size: 20px;
+      }
+
+      .form-group{
+        display: block;
+        margin: 5px;
+        padding: 3px;
+      }
+    </style>
+    <script type="text/javascript" src="/js/brython.js"></script>
+    <script type="text/javascript" src="/js/brython_stdlib.js"></script>
+    <script type="text/python">
+      from browser import document, alert
+      from scripts.query import get_query_string
+
+      def show_element(evt):
+          document['sh-field'].text = f'input[name="{evt.target.name}"] selecionado'
+          document['sh-text'].text = ''
+
+      def keypress(evt):
+          char = chr(evt.charCode)
+          document['sh-text'].text += char
+
+      for we in document.select('input'):
+          we.bind("click", show_element)
+          we.bind("keypress", keypress)
+
+      get_query_string(['nome', 'senha'], 'query')
+    </script>
+  </head>
+  <body onload="brython()">
+    <div id="grid" class="grid-container">
+      <header>
+        <h2>Elemento selecionado: <span id="sh-field"> </span></h2>
+        <h2>Texto digitado: <span id="sh-text"> </span></h2>
+      </header>
+      <form class="form-l0c0" action="#" method="get">
+        <h2>Formlário Linha 0 Coluna 0</h2>
+        <div class="form-group">
+          <label for="nome">Nome: </label>
+          <br>
+          <input type="text" name="nome">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="senha">Senha: </label>
+          <br>
+          <input type="password" name="senha">
+        </div>
+        <br>
+        <div class="form-group form-btn">
+          <input type="submit" name="l0c0" value="Enviar!">
+        </div>
+      </form>
+      <form class="form-l0c1" action="#" method="get">
+        <h2>Formlário Linha 0 Coluna 1</h2>
+        <div class="form-group">
+          <label for="nome">Nome: </label>
+          <br>
+          <input type="text" name="nome">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="senha">Senha: </label>
+          <br>
+          <input type="password" name="senha">
+        </div>
+        <br>
+        <div class="form-group form-btn">
+          <input type="submit" name="l0c1" value="Enviar!">
+        </div>
+      </form>
+      <form class="form-l1c0" action="#" method="get">
+        <h2>Formlário Linha 1 Coluna 0</h2>
+        <div class="form-group">
+          <label for="nome">Nome: </label>
+          <br>
+          <input type="text" name="nome">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="senha">Senha: </label>
+          <br>
+          <input type="password" name="senha">
+        </div>
+        <br>
+        <div class="form-group form-btn">
+          <input type="submit" name="l1c0" value="Enviar!">
+        </div>
+      </form>
+      <form class="form-l1c1" action="#" method="get">
+        <h2>Formlário Linha 1 Coluna 1</h2>
+        <div class="form-group">
+          <label for="nome">Nome: </label>
+          <br>
+          <input type="text" name="nome">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="senha">Senha: </label>
+          <br>
+          <input type="password" name="senha">
+        </div>
+        <br>
+        <div class="form-group form-btn">
+          <input type="submit" name="l1c1" value="Enviar!">
+        </div>
+      </form>
+      <div id="query" class="query">
+        <h2>Resultado</h2>
+      </div>
+    </div>
+  </body>
+</html>
