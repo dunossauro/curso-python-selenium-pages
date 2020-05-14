@@ -62,41 +62,45 @@
     <script type="text/javascript" src="/js/brython_stdlib.js"></script>
     <script type="text/python">
       from browser import document
+      from browser.local_storage import storage
       from scripts.query import get_query_string
 
-      def show_element(evt):
-          document['sh-field'].text = f'input[name="{evt.target.name}"] selecionado'
-          document['sh-text'].text = ''
+      order = storage.get('order')
+      if not order or '...' in order:
+          storage['order'] = 'l0c0'
 
-      def keypress(evt):
-          char = chr(evt.charCode)
-          document['sh-text'].text += char
+      elif document.query.getvalue('l0c0', None):
+          storage['order'] = 'l0c1'
 
-      for we in document.select('input'):
-          we.bind("click", show_element)
-          we.bind("keypress", keypress)
+      elif document.query.getvalue('l0c1', None):
+          storage['order'] = 'l1c0'
 
+      elif document.query.getvalue('l1c0', None):
+          storage['order'] = 'l1c1'
+
+      elif document.query.getvalue('l1c1', None):
+          storage['order'] = '... Mentira, você conseguiu terminar'
+      document.select('span')[0].text = storage['order']
       get_query_string(['nome', 'senha'], 'query')
     </script>
   </head>
   <body onload="brython()">
     <div id="grid" class="grid-container">
       <header>
-        <h2>Elemento selecionado: <span id="sh-field"> </span></h2>
-        <h2>Texto digitado: <span id="sh-text"> </span></h2>
+        <p>Você precisa peencher o fodumlário <span></span></p>
       </header>
       <form class="form-l0c0" action="#" method="get">
         <h2>Formlário Linha 0 Coluna 0</h2>
         <div class="form-group">
           <label for="nome">Nome: </label>
           <br>
-          <input type="text" name="nome">
+          <input type="text" name="nome" required>
         </div>
         <br>
         <div class="form-group">
           <label for="senha">Senha: </label>
           <br>
-          <input type="password" name="senha">
+          <input type="password" name="senha" required>
         </div>
         <br>
         <div class="form-group form-btn">
@@ -108,13 +112,13 @@
         <div class="form-group">
           <label for="nome">Nome: </label>
           <br>
-          <input type="text" name="nome">
+          <input type="text" name="nome" required>
         </div>
         <br>
         <div class="form-group">
           <label for="senha">Senha: </label>
           <br>
-          <input type="password" name="senha">
+          <input type="password" name="senha" required>
         </div>
         <br>
         <div class="form-group form-btn">
@@ -126,13 +130,13 @@
         <div class="form-group">
           <label for="nome">Nome: </label>
           <br>
-          <input type="text" name="nome">
+          <input type="text" name="nome" required>
         </div>
         <br>
         <div class="form-group">
           <label for="senha">Senha: </label>
           <br>
-          <input type="password" name="senha">
+          <input type="password" name="senha" required>
         </div>
         <br>
         <div class="form-group form-btn">
@@ -144,13 +148,13 @@
         <div class="form-group">
           <label for="nome">Nome: </label>
           <br>
-          <input type="text" name="nome">
+          <input type="text" name="nome" required>
         </div>
         <br>
         <div class="form-group">
           <label for="senha">Senha: </label>
           <br>
-          <input type="password" name="senha">
+          <input type="password" name="senha" required>
         </div>
         <br>
         <div class="form-group form-btn">
