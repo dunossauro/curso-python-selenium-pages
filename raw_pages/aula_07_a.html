@@ -1,0 +1,41 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Caixinha</title>
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/brython@3.8.8/brython.min.js">
+    </script>
+    <style media="screen">
+    * {
+      font-family: monospace;
+      text-align: center;
+      align-self: center;
+    }
+      rect {
+        fill:red;
+        stroke:black;
+        stroke-width:5;
+        stroke-opacity:0.9;
+        width: 95%;
+        height: 95%;
+
+      }
+      svg {
+        width: 500;
+        height: 500;
+      }
+    </style>
+    <script type="text/python">
+      from scripts import mouse_events
+      mouse_events.bind_aula_7()
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <h1>Eventos de mouse</h1>
+    <svg>
+      <rect id="caixa" x="5" y="5" rx="20" ry="20"/>
+    </svg>
+    <br>
+    <p>Combinação <span></span></p>
+  </body>
+</html>
