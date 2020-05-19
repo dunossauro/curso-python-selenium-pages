@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Click</title>
+  </head>
+  <body>
+    <button id="btn">Click em mim</button>
+    <script type="text/javascript">
+      function func() {
+         document.getElementById("btn").innerHTML = "Já fui clicado"
+      }
+      document.getElementById("btn").addEventListener("click", func);
+    </script>
+  </body>
+</html>
