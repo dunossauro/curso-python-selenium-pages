@@ -28,6 +28,9 @@ def box_behavior(event):
     elif event.ctrlKey:
         color = event_color_crtl[event.type]
 
+    elif event.type == 'contextmenu':
+        color = 'wheat'
+
     else:
         color = event_color[event.type]
 
@@ -37,6 +40,7 @@ def box_behavior(event):
 
     document['caixa'].style.fill = color
     document.select_one('span').text = '{' + area_output + '}'
+
     try:
         document.select_one('#area').text += '{' + area_output + '}\n'
     except Exception:
@@ -48,3 +52,4 @@ def bind_aula_7():
     document.select_one('#caixa').bind('mouseleave', box_behavior)
     document.select_one('#caixa').bind('click', box_behavior)
     document.select_one('#caixa').bind('dblclick', box_behavior)
+    document.select_one('#caixa').bind('contextmenu', box_behavior)
