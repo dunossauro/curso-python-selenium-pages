@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/brython@3.8.8/brython.min.js">
+    </script>
+    <title>Click</title>
+    <script type="text/python">
+      from browser import document, bind
+
+      @bind('input', 'focus')
+      def focus_moitor(event):
+          document.select_one('span').text = f'{event.target.id} está com foco'
+
+      @bind('input', 'blur')
+      def blur_monitor(event):
+          document.select_one('span').text = f'{event.target.id} está sem foco'
+
+      @bind('input', 'change')
+      def change(event):
+          document.select_one('p').text = str(int(document.select_one('p').text) + 1)
+    </script>
+    <style media="screen">
+      body {
+        font-family: monospace;
+        transform: scale(3.0);
+        transform-origin: 0 0;
+      }
+    </style>
+  </head>
+  <body onload="brython()">
+    <label for="nome">Digite seu nome</label>
+    <br>
+    <input type="text" name="nome">
+    <span></span>
+    <br>
+    <p>0</p>
+  </body>
+</html>
