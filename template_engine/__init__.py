@@ -5,6 +5,20 @@ from os import mkdir, listdir
 from shutil import copytree, rmtree, copy
 
 
+def build_path(path):
+    """Executa make_page em todos os arquivos.py de um diretório."""
+    for page in listdir(path):
+        make_page(
+            page.replace('.py', ''),
+            {
+                'title': page.replace('py', 'html'),
+                'type': page,
+                'path': path.split('/')[-1],
+                'brython_file': page.replace('.py', ''),
+            },
+        )
+
+
 def _select_template(template):
     temp_path = FileSystemLoader(searchpath=abspath("./templates"))
 
