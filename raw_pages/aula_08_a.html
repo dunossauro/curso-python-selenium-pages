@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exemplo</title>
+    <script type="text/javascript" src="/js/brython.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <style media="screen">
+      .span {
+        font-size: 35px;
+      }
+    </style>
+    <script type="text/python">
+      from browser import document, bind, html
+
+      body_b = document.select_one('.body_b')
+
+
+      def shift_key():
+          if not document.select('#shift'):
+            shift = html.LABEL('Shift', For='shift', id='shift')
+            shift <= html.BR()
+
+            body_b = document.select_one('.body_b')
+            body_b <= shift
+
+            body_b <= html.SPAN(
+                '', id='span_shift', Class='span'
+            )
+            body_b <= html.BR()
+
+
+      def caps_key():
+          if not document.select('#caps'):
+            shift = html.LABEL('Caps', For='caps', id='caps')
+            shift <= html.BR()
+            body_b <= shift
+
+            body_b <= html.SPAN(
+                '', id='span_caps', Class='span'
+            )
+            body_b <= html.BR()
+
+
+      def caps_shift():
+          if not document.select('#caps_shift'):
+            shift = html.LABEL('Caps + Shift', For='caps', id='caps-shift')
+            shift <= html.BR()
+            body_b <= shift
+
+            body_b <= html.SPAN(
+                '', id='caps_shift', Class='span'
+            )
+            body_b <= html.BR()
+
+
+      @bind('.inputs', 'keypress')
+      def keydown(event):
+          caps = event.getModifierState('CapsLock')
+          if event.key == 'Enter':
+              return
+
+          if caps and event.shiftKey:
+              caps_shift()
+              document['caps_shift'].text += event.key
+
+          elif caps:
+              caps_key()
+              document['span_caps'].text += event.key
+
+          elif event.shiftKey:
+              shift_key()
+              document['span_shift'].text += event.key
+          else:
+              document['nome'].text += event.key
+
+      @bind('#limpar', 'click')
+      def limpar(event):
+          document['nome'].text = ''
+          document.select_one('textarea ').value = ''
+          if document.select('#shift'):
+              document['caps_shift'].text = ''
+          if document.select('#caps_shift'):
+              document['span_shift'].text = ''
+          if document.select('#caps'):
+              document['span_caps'].text = ''
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_a">
+        <h1>Entradas</h1>
+        <label for="texto">Digite aqui</label>
+        <br>
+        <textarea class="inputs" name="texto" rows="8" cols="80"></textarea>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="button" id="limpar">Limpar</button>
+      </div>
+      <div class="body_b">
+        <h1>Saídas</h1>
+        <label for="nome">Normal</label>
+        <br>
+        <span class="span" id="nome"></span>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>
