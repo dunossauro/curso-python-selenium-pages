@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exemplo</title>
+    <script type="text/javascript" src="/js/brython.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <style media="screen">
+      .span {
+        font-size: 35px;
+      }
+    </style>
+    <script async type="text/python">
+      from browser import document, bind, html
+
+
+      def make_output(event, mouse=False):
+          if mouse:
+              return '{' + f'evento: {event.type}, targer: {event.currentTarget.id}, x: {event.offsetX}, y: {event.offsetY}' + '}\n'
+          return '{' + f'evento: {event.type}, targer: {event.currentTarget.id}, key: {event.key}' + '}\n'
+
+
+      @bind('div.body_a', 'keydown')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event)
+
+
+      @bind('div.body_a', 'keyup')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event)
+
+
+      @bind('div.body_a', 'click')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event, mouse=True)
+
+
+      @bind('div.body_a', 'dblclick')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event, mouse=True)
+
+
+      @bind('body', 'scroll')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event, mouse=True)
+
+
+      @bind('div.body_a', 'mousemove')
+      def keyloger(event):
+          document.select_one('#keyloger').text += make_output(event, mouse=True)
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_a">
+        <h1>Action Loger</h1>
+        <label for="result">interceptado</label>
+        <br>
+        <textarea id="keyloger" name="result" rows="40" cols="180" readonly></textarea>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>
