@@ -36,6 +36,10 @@ header {
   grid-area: body_a;
 }
 
+.body_b {
+  grid-area: body_b;
+}
+
 .body_c {
   grid-area: body_c;
 }
