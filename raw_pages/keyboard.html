@@ -157,18 +157,16 @@
 
           if event.key == ' ':
             id_key = '#space'
-            try:
-                if event.shiftKey and event.key not in special_keys:
-                    id_key = id_key.lower()
-                    document.select_one('#Shift').style.background = 'green'
 
-                if event.type == 'keydown':
-                    color = 'red'
-                else:
-                    color = 'blue'
-                document.select_one(id_key).style.background = color
-            except Exception:
-                ...
+          if event.shiftKey and event.key not in special_keys:
+              id_key = id_key.lower()
+              document.select_one('#Shift').style.background = 'green'
+
+          if event.type == 'keydown':
+              color = 'red'
+          else:
+              color = 'blue'
+          document.select_one(id_key).style.background = color
 
       document.select_one('html').bind('keydown', key_event)
       document.select_one('html').bind('keyup', key_event)
