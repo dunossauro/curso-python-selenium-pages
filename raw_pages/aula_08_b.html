@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ligue os bixin</title>
+    <script type="text/javascript" src="/js/brython.js"></script>
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <style media="screen">
+      * {
+        font-family: monospace;
+      }
+    </style>
+    <script type="text/python">
+        from browser import document, bind
+
+        @bind('[draggable="true"]', 'dragstart')
+        def drag_image(event):
+            print(event.target.id, event.type)
+            event.dataTransfer.setData('element', event.target.id)
+
+        @bind('div.dropzone', 'dragover')
+        def drag_image(event):
+            tranfer = event.dataTransfer.getData('element')
+            document.select_one(
+                f'#{tranfer.split("-")[0]}-div') <= document.select_one(f'#{tranfer}')
+          </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <div class="body_a">
+        <h1>Exemplo de dag and drop</h1>
+
+        Clique e arraste o elemento no lugar correto
+      </div>
+      <div class="body_b">
+        <div>
+          <img  id="fenix-bp" draggable="true" src="https://img.icons8.com/wired/64/000000/fenix.png"/>
+        </div>
+        <div>
+          <img id="unicornio-bp" draggable="true" src="https://img.icons8.com/windows/64/000000/unicorn.png"/>
+        </div>
+        <div>
+          <img id="pelicano-pb" draggable="true" src="https://img.icons8.com/wired/64/000000/pelican--v1.png"/>
+        </div>
+      </div>
+      <div class="body_c">
+        <div id="fenix-div" class="dropzone">
+          <img id="fenix-color" src="https://img.icons8.com/color/64/000000/fenix.png"/>
+        </div>
+        <div id="unicornio-div" class="dropzone">
+          <img id="unicornio-color" src="https://img.icons8.com/color/64/000000/unicorn.png"/>
+        </div>
+        <div id="pelicano-div" class="dropzone">
+          <img id="pelicano-color" src="https://img.icons8.com/color/64/000000/pelican.png"/>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
