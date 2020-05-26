@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/js/brython.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <title>Meu teclado</title>
+    <style media="screen">
+        .keyboard {
+            text-align: center;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+
+        .keyboard__row {
+            display: inline-block;
+            height: 3em;
+            margin: 0.2em;
+        }
+
+        .keyboard__row--h1 {
+            line-height: 1.4em;
+        }
+
+        .keyboard__row--h3 {
+            height: 3.3em;
+        }
+
+        .keyboard__row > * {
+            position: relative;
+            background: #333;
+            text-align: center;
+            color: #eee;
+            float: left;
+            border-radius: 0.3em;
+            margin: 0.2em;
+            padding: 0.2em;
+            width: 3.3em;
+            height: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            -webkit-user-select: none;
+            border: 1px solid #444;
+            box-shadow: 0 0.2em 0 0.05em #222;
+            border-bottom-color: #555;
+        }
+
+        .keyboard__row--h1 > div {
+            width: 3.5em;
+        }
+
+        .keyboard__row > div[data-pressed],
+        .keyboard__row > div:active {
+            background: #2a2a2a;
+            color: #aaa;
+            position: relative;
+            top: 0.2em;
+            box-shadow: 0 0 0 0.05em black;
+        }
+
+        .key--w3 {
+            width: 4.6em;
+        }
+
+        .key--w4 {
+            width: 6em;
+        }
+
+        .key--w5 {
+            width: 6.5em;
+        }
+
+        .key--w6 {
+            width: 8.3em;
+        }
+
+        .space {
+            width: 18em;
+        }
+
+        .key--double > * {
+            padding-top: 0.2em;
+        }
+        .key--double > div {
+            padding-top: 0.0em;
+        }
+
+        .key--letter {
+            line-height: 2.8em;
+        }
+
+        .key--bottom-left > * {
+            position: absolute;
+            text-align: left;
+            bottom: 0.4em;
+            left: 0.4em;
+        }
+
+        .key--bottom-right > * {
+            position: absolute;
+            text-align: right;
+            bottom: 0.4em;
+            right: 0.4em;
+        }
+
+        .key--fn > * {
+            font-size: 0.6em;
+            line-height: 1em;
+            padding-top: 1.2em;
+            padding-right: 0.2em;
+            text-align: right;
+            float: right;
+        }
+
+        .key--word > * {
+            font-size: 0.8em;
+        }
+
+        .key--arrow--tall > *,
+        .key--arrow > * {
+            font-size: 0.5em;
+            line-height: 3em;
+        }
+
+        .key--arrow {
+            height: 1.8em;
+            margin-top: 1.7em;
+            line-height: 0.5em;
+        }
+
+        .key--arrow--tall > * {
+            padding-top: 0.2em;
+        }
+
+        .keyboard > .keyboard__row {
+            text-align: center;
+        }
+
+    </style>
+    <script type="text/python">
+      from browser import document
+
+      special_keys = [
+          'F1', 'F2', 'F3', 'F4',
+          'F5', 'F6', 'F7', 'F8',
+          'F9', 'F10', 'F11', 'F12',
+          'Shift', 'CapsLock'
+      ]
+
+
+      def key_event(event):
+          print(f'#{event.key}')
+          id_key = f'#{event.key}'
+
+          if event.key == ' ':
+            id_key = '#space'
+
+          if event.shiftKey and event.key not in special_keys:
+              id_key = id_key.lower()
+              document.select_one('#Shift').style.background = 'green'
+
+          if event.type == 'keydown':
+              color = 'red'
+          else:
+              color = 'blue'
+          document.select_one(id_key).style.background = color
+
+      document.select_one('html').bind('keydown', key_event)
+      document.select_one('html').bind('keyup', key_event)
+
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_b">
+        <div class="keyboard">
+          <div class="keyboard__row keyboard__row--h1">
+            <div id="Escape" class="key key--word key">
+              <span>esc</span>
+            </div>
+            <div id="F1" class="key">
+              <span>F1</span>
+            </div>
+            <div id="F2" class="key">
+              <span >F2</span>
+            </div>
+            <div id="F3" class="key">
+              <span>F3</span>
+            </div>
+            <div id="F4" class="key">
+              <span>F4</span>
+            </div>
+            <div id="F5"class="key">
+              <span>F5</span>
+            </div>
+            <div id="F6" class="key">
+              <span>F6</span>
+            </div>
+            <div id="F7" class="key">
+              <span>F7</span>
+            </div>
+            <div id="F8" class="key">
+              <span>F8</span>
+            </div>
+            <div id="F9" class="key">
+              <span>F9</span>
+            </div>
+            <div id="F10" class="key">
+              <span>F10</span>
+            </div>
+            <div id="F11"class="key">
+              <span>F11</span>
+            </div>
+            <div id="F2" class="key">
+              <span>F12</span>
+            </div>
+            <div data-key="n/a" class="key key--word">
+              <span></span>
+            </div>
+          </div>
+          <div class="keyboard__row">
+            <div id="Dead" class="key key--double">
+              <div>~</div>
+              <div>`</div>
+            </div>
+            <div class="key--double">
+              <div>!</div>
+              <div>1</div>
+            </div>
+            <div class="key--double">
+              <div>@</div>
+              <div>2</div>
+            </div>
+            <div class="key--double">
+              <div>#</div>
+              <div>3</div>
+            </div>
+            <div class="key--double">
+              <div>$</div>
+              <div>4</div>
+            </div>
+            <div class="key--double">
+              <div>%</div>
+              <div>5</div>
+            </div>
+            <div class="key--double">
+              <div>^</div>
+              <div>6</div>
+            </div>
+            <div class="key--double">
+              <div>&</div>
+              <div>7</div>
+            </div>
+            <div class="key--double">
+              <div>*</div>
+              <div>8</div>
+            </div>
+            <div class="key--double">
+              <div>(</div>
+              <div>9</div>
+            </div>
+            <div class="key--double">
+              <div>)</div>
+              <div>0</div>
+            </div>
+            <div class="key--double">
+              <div>_</div>
+              <div>-</div>
+            </div>
+            <div class="key--double">
+              <div>+</div>
+              <div>=</div>
+            </div>
+            <div class="key--bottom-right key--word key--w4">
+              <span>delete</span>
+            </div>
+          </div>
+          <div class="keyboard__row">
+            <div id="Tab" class="key key--bottom-left key--word key--w4" >
+              <span>tab</span>
+            </div>
+            <div class="key--letter" id="q">Q</div>
+            <div class="key--letter" id="w">W</div>
+            <div class="key--letter" id="e">E</div>
+            <div class="key--letter" id="r">R</div>
+            <div class="key--letter" id="t">T</div>
+            <div class="key--letter" id="y">Y</div>
+            <div class="key--letter" id="u">U</div>
+            <div class="key--letter" id="i">I</div>
+            <div class="key--letter" id="o">O</div>
+            <div class="key--letter" id="p">P</div>
+            <div class="key--double"  data-char="{[">
+              <div>{</div>
+              <div>[</div>
+            </div>
+            <div class="key--double"  data-char="}]">
+              <div>}</div>
+              <div>]</div>
+            </div>
+            <div class="key--double"  data-char="|\">
+              <div>|</div>
+              <div>\</div>
+            </div>
+          </div>
+          <div class="keyboard__row">
+            <div id="CapsLock"class="key key--bottom-left key--word key--w5" >
+              <span>caps lock</span>
+            </div>
+            <div class="key--letter" id="a">A</div>
+            <div class="key--letter" id="s">S</div>
+            <div class="key--letter" id="d">D</div>
+            <div class="key--letter" id="f">F</div>
+            <div class="key--letter" id="g">G</div>
+            <div class="key--letter" id="h">H</div>
+            <div class="key--letter" id="j">J</div>
+            <div class="key--letter" id="k">K</div>
+            <div class="key--letter" id="l">L</div>
+            <div class="key--double">
+              <div>:</div>
+              <div>;</div>
+            </div>
+            <div class="key--double" >
+              <div>"</div>
+              <div>'</div>
+            </div>
+            <div class="key--bottom-right key--word key--w5" >
+              <span>return</span>
+            </div>
+          </div>
+          <div class="keyboard__row">
+            <div id="Shift" class="key--bottom-left key--word key--w6" >
+              <span>shift</span>
+            </div>
+            <div class="key--letter" id="z">Z</div>
+            <div class="key--letter" id="x">X</div>
+            <div class="key--letter" id="c">C</div>
+            <div class="key--letter" id="v">V</div>
+            <div class="key--letter" id="b">B</div>
+            <div class="key--letter" id="n">N</div>
+            <div class="key--letter" id="m">M</div>
+            <div class="key--double" >
+              <div>&lt;</div>
+              <div>,</div>
+            </div>
+            <div class="key--double" >
+              <div>&gt;</div>
+              <div>.</div>
+            </div>
+            <div class="key--double" >
+              <div>?</div>
+              <div>/</div>
+            </div>
+            <div id="Sihft" class="key--bottom-right key--word key--w6">
+              <span>shift</span>
+            </div>
+          </div>
+          <div class="keyboard__row keyboard__row--h3">
+            <div class="key--bottom-left key--word">
+              <span>ctrl</span>
+            </div>
+            <div id="OS" class="key--bottom-left key--word">
+              <span>meta</span>
+            </div>
+            <div id="Alt"class="key--bottom-right key--word">
+              <span>alt</span>
+            </div>
+            <div id="space" class="key--double key--right space">
+              &nbsp;
+            </div>
+            <div id="AltGraph" class="key--bottom-right key--word">
+              <span>altGR</span>
+            </div>
+            <div id="OS" class="key--bottom-left key--word">
+              <span>meta</span>
+            </div>
+            <div class="key--bottom-left key--word">
+              <span>.</span>
+            </div>
+            <div id="Control" class="key--bottom-left key--word">
+              <span>ctrl</span>
+            </div>
+            <div class="key--arrow">
+              <span>&#9664;</span>
+            </div>
+            <div class="key--double key--arrow--tall">
+              <div>&#9650;</div>
+              <div>&#9660;</div>
+            </div>
+            <div class="key--arrow">
+              <span>&#9654;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
