@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Drag and Drop Elements in HTML</title>
+<script>
+    function dragStart(e) {
+        // Sets the operation allowed for a drag source
+        e.dataTransfer.effectAllowed = "move";
+
+        // Sets the value and type of the dragged data
+        e.dataTransfer.setData("Text", e.target.getAttribute("id"));
+    }
+    function dragOver(e) {
+        // Prevent the browser default handling of the data
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    function drop(e) {
+        // Cancel this event for everyone else
+        e.stopPropagation();
+        e.preventDefault();
+
+        // Retrieve the dragged data by type
+        var data = e.dataTransfer.getData("Text");
+
+        // Append image to the drop box
+        e.target.appendChild(document.getElementById(data));
+    }
+</script>
+<style>
+    #dropBox {
+        width: 200px;
+        height: 200px;
+        border: 5px dashed gray;
+        background: lightyellow;
+        text-align: center;
+        margin: 20px 0;
+        color: orange;
+    }
+    #dropBox img {
+        margin: 10px;
+    }
+</style>
+</head>
+<body>
+    <h2>Drag and Drop Demo</h2>
+    <p>Drag and drop the image into the drop box:</p>
+    <div id="dropBox" ondragover="dragOver(event);" ondrop="drop(event);">
+        <!--Dropped image will be inserted here-->
+    </div>
+    <img src="/examples/images/kites.jpg" id="dragA" draggable="true" ondragstart="dragStart(event);" width="180" height="180" alt="Flying Kites">
+</body>
+</html>                            
