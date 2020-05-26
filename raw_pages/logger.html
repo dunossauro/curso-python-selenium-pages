@@ -18,8 +18,8 @@
 
       def make_output(event, mouse=False):
           if mouse:
-              return '{' + f'evento: {event.type}, targer: {event.currentTarget.id}, x: {event.offsetX}, y: {event.offsetY}' + '}\n'
-          return '{' + f'evento: {event.type}, targer: {event.currentTarget.id}, key: {event.key}' + '}\n'
+              return '{' + f'evento: {event.type}, target: {event.currentTarget.id}, x: {event.offsetX}, y: {event.offsetY}' + '}\n'
+          return '{' + f'evento: {event.type}, target: {event.currentTarget.id}, key: {event.key}' + '}\n'
 
 
       @bind('div.body_a', 'keydown')
