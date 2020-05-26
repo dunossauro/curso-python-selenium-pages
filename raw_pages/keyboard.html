@@ -151,12 +151,38 @@
           'Shift', 'CapsLock'
       ]
 
+      symbol_keys = {
+        '#1': '#um',
+        '#2': '#dois',
+        '#3': '#tres',
+        '#4': '#quatro',
+        '#5': '#cinco',
+        '#6': '#seis',
+        '#7': '#sete',
+        '#8': '#oito',
+        '#9': '#nove',
+        '#0': '#zero',
+        '#!': '#um',
+        '#@': '#dois',
+        '##': '#tres',
+        '#$': '#quatro',
+        '#%': '#cinco',
+        '#^': '#seis',
+        '#&': '#sete',
+        '#&': '#oito',
+        '#(': '#nove',
+        '#)': '#zero',
+      }
+
 
       def key_event(event):
           id_key = f'#{event.key}'
 
           if event.key == ' ':
-            id_key = '#space'
+              id_key = '#space'
+
+          if id_key in symbol_keys:
+              id_key = symbol_keys[id_key]
 
           if event.shiftKey and event.key not in special_keys:
               id_key = id_key.lower()
@@ -253,51 +279,51 @@
               <div>~</div>
               <div>`</div>
             </div>
-            <div class="key--double">
+            <div id="um" class="key--double">
               <div>!</div>
               <div>1</div>
             </div>
-            <div class="key--double">
+            <div id="dois" class="key--double">
               <div>@</div>
               <div>2</div>
             </div>
-            <div class="key--double">
+            <div id="tres"class="key--double">
               <div>#</div>
               <div>3</div>
             </div>
-            <div class="key--double">
+            <div id="quatro" class="key--double">
               <div>$</div>
               <div>4</div>
             </div>
-            <div class="key--double">
+            <div id="cinco" class="key--double">
               <div>%</div>
               <div>5</div>
             </div>
-            <div class="key--double">
+            <div id="seis" class="key--double">
               <div>^</div>
               <div>6</div>
             </div>
-            <div class="key--double">
+            <div id="sete" class="key--double">
               <div>&</div>
               <div>7</div>
             </div>
-            <div class="key--double">
+            <div id="oito" class="key--double">
               <div>*</div>
               <div>8</div>
             </div>
-            <div class="key--double">
+            <div id="nove" class="key--double">
               <div>(</div>
               <div>9</div>
             </div>
-            <div class="key--double">
+            <div id="zero" class="key--double">
               <div>)</div>
               <div>0</div>
             </div>
-            <div class="key--double">
+            <div cid="menos" lass="key--double">
               <div>_</div>
               <div>-</div>
             </div>
-            <div class="key--double">
+            <div id="igual"class="key--double">
               <div>+</div>
               <div>=</div>
             </div>
