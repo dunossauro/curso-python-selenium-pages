@@ -1,0 +1,66 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Aula 09</title>
+    <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <style media="screen">
+      .unclick {
+        pointer-events: none
+      }
+    </style>
+    <script async type="text/python">
+      from browser import document, html
+      from scripts import waits
+      document.select_one('fieldset') <= html.BUTTON('Barrinha top',
+          Class="btn btn-default btn-ghost", id="request", type="button", name="button"
+      )
+      waits.wait_load('09a')
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_b">
+        <fieldset>
+          <legend>Waits</legend>
+          <div class="terminal-alert terminal-alert-error">
+            Aguardando carregamento!!
+          </div>
+          <br>
+          <div id="progress-bar">
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>
