@@ -11,7 +11,7 @@ def build_path(path):
         make_page(
             page.replace('.py', ''),
             {
-                'title': page.replace('py', 'html'),
+                'title': page.replace('py', 'html') if not 'index' in page else 'Curso de selenium com Python',
                 'type': page,
                 'path': path.split('/')[-1],
                 'brython_file': page.replace('.py', ''),
