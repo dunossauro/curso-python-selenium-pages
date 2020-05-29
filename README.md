@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/72784331-9ed0-4160-bec3-d5763deb3ce2/deploy-status)](https://app.netlify.com/sites/curso-python-selenium/deploys)
+
 # Páginas do curso de python com selenium
 
 site: https://curso-python-selenium.netlify.com/
