@@ -4,6 +4,7 @@ site/
 aula*.md
 *.log
 exemplo*
+slides/
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
