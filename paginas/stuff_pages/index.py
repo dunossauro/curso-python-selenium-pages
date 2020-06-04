@@ -68,7 +68,7 @@ document['main'] <= palestras_youtube
 
 
 lista_exercicios = html.UL()
-for n in range(1, 8):
+for n in range(1, 9):
     lista_exercicios <= anchor_in_list(
         f'Exercício {n}', f'exercicio_0{n}.html'
     )

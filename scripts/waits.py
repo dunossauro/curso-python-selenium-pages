@@ -1,5 +1,37 @@
 from browser import document, bind, html, timer
 from functools import partial
+from random import randint, choice
+
+
+def create_btn(where, text, classes):
+    document.select_one(where) <= html.BUTTON(
+        text,
+        Class=classes,
+        id='request',
+        type='button',
+        name='button'
+    )
+
+
+def exercice_08():
+    r_value = randint(1, 50)
+    def btn_creates(index):
+        btn = document.select('#request')
+        if btn:
+            btn[0].remove()
+        classes = f'btn btn-{choice(["default", "primary", "error"])} btn-ghost'
+        if index == r_value:
+            classes += ' selenium'
+            print('selenium')
+        create_btn('fieldset', 'Botão', classes)
+
+    document.select_one('.terminal-alert-error').remove()
+    fieldset = document.select_one('fieldset')
+    fieldset <= html.P(
+        'Encontre a classe .selenium no elementos que estão surgindo'
+    )
+    for index in range(0, 51):
+        timer.set_timeout(partial(btn_creates, index), index * 500)
 
 def wait_load(aula):
     document.select_one('#request').bind('click', create_progress_bar)
@@ -36,12 +68,12 @@ def manage_progress(id, percent):
 def create_progress_bar(event):
     if not document.select('.progress-bar'):
         bar_attrs = {
-            'class': "progress-bar-filled",
+            'class': 'progress-bar-filled',
             'style': {'width': '0%'},
             'data-filled': 'Loading 0%',
             'id': 'bar',
             }
-        progress = html.DIV(Class="progress-bar progress-bar-show-percent")
+        progress = html.DIV(Class='progress-bar progress-bar-show-percent')
         progress <= html.DIV(**bar_attrs)
         document.select_one('#progress-bar') <= progress
 
