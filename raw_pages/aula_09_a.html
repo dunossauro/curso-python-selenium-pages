@@ -15,8 +15,10 @@
     <script async type="text/python">
       from browser import document, html
       from scripts import waits
-      document.select_one('fieldset') <= html.BUTTON('Barrinha top',
-          Class="btn btn-default btn-ghost", id="request", type="button", name="button"
+      waits.create_btn(
+          'fieldset',
+          'Barrinha top',
+          'btn btn-default btn-ghost'
       )
       waits.wait_load('09a')
     </script>
