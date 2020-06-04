@@ -43,3 +43,7 @@ header {
 .body_c {
   grid-area: body_c;
 }
+
+footer {
+  grid-area: footer;
+}
