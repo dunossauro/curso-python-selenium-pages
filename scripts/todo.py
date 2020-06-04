@@ -1,6 +1,21 @@
 from browser import document, html
 
 
+def error_message():
+    if not document.select('.terminal-alert-error'):
+        error_div = html.DIV(
+            'Preencha corretamente',
+            Class='terminal-alert terminal-alert-error',
+        )
+        form_field = document.select_one('fieldset')
+        form_field.insertBefore(error_div, form_field.firstChild)
+
+
+def clear_error_messages():
+    for error in document.select('.terminal-alert-error'):
+        error.remove()
+
+
 def card_elements(event):
     card = event.target.parentNode.parentNode
     error = card.select_one('.btn-error')
@@ -9,34 +24,41 @@ def card_elements(event):
 
 
 def read_form():
-    return (
-        document.select_one('#todo-name').value,
-        document.select_one('#todo-desc').value,
-        document.select_one('#todo-next').checked
-    )
+    name = document.select_one('#todo-name').value,
+    description = document.select_one('#todo-desc').value,
+    check = document.select_one('#todo-next').checked
+    valid = bool(name[0])
+
+    if not valid:
+        error_message()
+    else:
+        clear_error_messages()
+
+    return name, description, check, valid
 
 
 def create_card(event):
-    name, desc, checked = read_form()
-    todo = document.select_one('#todo')
-    card = html.DIV(Class='terminal-card')
-    card <= html.HEADER(name)
-    card <= html.DIV(desc)
-    buttons = html.DIV(Class='buttons')
-    do = html.BUTTON('Fazer', Class='btn btn-primary btn-ghost do')
-    cancel = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
+    name, desc, checked, valid = read_form()
+    if valid:
+        todo = document.select_one('#todo')
+        card = html.DIV(Class='terminal-card')
+        card <= html.HEADER(name)
+        card <= html.DIV(desc)
+        buttons = html.DIV(Class='buttons')
+        do = html.BUTTON('Fazer', Class='btn btn-primary btn-ghost do')
+        cancel = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
 
-    do.bind('click', doing_card)
-    cancel.bind('click', cancel_card)
+        do.bind('click', doing_card)
+        cancel.bind('click', cancel_card)
 
-    buttons <= do
-    buttons <= cancel
-    card <= buttons
+        buttons <= do
+        buttons <= cancel
+        card <= buttons
 
-    if checked:
-        todo.insertBefore(card, todo.firstChild)
-    else:
-        todo <= card
+        if checked:
+            todo.insertBefore(card, todo.firstChild)
+        else:
+            todo <= card
 
 
 def doing_card(event):
