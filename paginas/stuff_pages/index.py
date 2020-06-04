@@ -14,6 +14,7 @@ paginas_praticar <= anchor_in_list('Caixinha', 'caixinha.html')
 paginas_praticar <= anchor_in_list('Teclado', 'keyboard.html')
 paginas_praticar <= anchor_in_list('Logger', 'logger.html')
 paginas_praticar <= anchor_in_list('Drag n Drop', 'drag.html')
+paginas_praticar <= anchor_in_list('TODO list', 'todo.html')
 document['aside'] <= paginas_praticar
 
 lista_explicacoes = html.UL()
