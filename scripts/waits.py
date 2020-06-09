@@ -40,6 +40,7 @@ def wait_load(aula):
     if aula == '09b':
         document.select_one('#request').style.pointerEvents = 'visible'
         document.select_one('#request').classList.remove('btn-error')
+        document.select_one('#request').classList.remove('unclick')
         document.select_one('#request').classList.add('btn-primary')
 
 def manage_progress(id, percent):
