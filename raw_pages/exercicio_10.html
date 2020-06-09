@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo list</title>
+    <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/todo_grid.css" />
+    <style media="screen">
+      main {
+        margin-left: 35%;
+        margin-right: 35%;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 5px;
+      }
+      .buttons > button {
+        margin: 5px;
+      }
+    </style>
+    <script type="text/python">
+      from browser import document, bind
+      from scripts import exec_10 as todo
+      document.select_one('#todo-submit').bind('click', todo.create_card)
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="split-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main>
+        <form>
+          <fieldset>
+            <legend>TODO list</legend>
+            <div class="form-group">
+              <label for="terefa">Nome da tarefa</label>
+              <input id="todo-name" type="text" name="Tarefa" required>
+            </div>
+            <div class="form-group">
+              <label for="tarea">Descrição da tarefa</label>
+              <textarea id="todo-desc" name="tarea" rows="5" cols="30"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="check">Urgente?</label>
+              <input id="todo-next" type="checkbox" name="check">
+            </div>
+            <button id="todo-submit" type="button" class="btn btn-primary btn-block">Colocar na Fila</button>
+          </fieldset>
+        </form>
+      </main>
+      <div class="body_a">
+        <fieldset>
+          <legend>A fazer</legend>
+          <div id="todo" class="terminal-timeline">
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="body_b">
+        <fieldset>
+          <legend>Fazendo</legend>
+          <div id="doing" class="terminal-timeline">
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="body_c">
+        <fieldset>
+          <legend>Feito</legend>
+          <div id="done" class="terminal-timeline">
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>
