@@ -5,46 +5,15 @@
     <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
     <meta charset="utf-8">
     <title>Aula 10a</title>
-    <style media="screen">
-      body * {
-        visibility: hidden;
-      }
-      body h2,
-      body button {
-        visibility: visible;
-      }
-    </style>
     <script type="text/python">
-      from browser import document, timer, html
-      from functools import partial
-
-      def set_value(event):
-          p = html.P('Cliqueiiiiiiiiiii')
-          p.style.visibility = 'visible'
-          document <= p
-
-      def delay_to_show_elements(element):
-          element.style.visibility = 'visible'
-
-      def delay_to_enable_button():
-          element = document.select_one('button').disabled = False
-
-      for i, element in enumerate(document.select('h1'), 1):
-          timer.set_timeout(
-              partial(delay_to_show_elements, element), i * 2000
-          )
-      timer.set_timeout(delay_to_enable_button, 6000)
-
-      document.select_one('button').bind('click', set_value)
+    from scripts import waits
+    waits.create_btn(
+        'body',
+        'Botão',
+    )
     </script>
   </head>
   <body onload="brython()">
-    <h1>Bem vindo ao site invisível</h1>
-    <h1>Sério, é mesmo invisível</h1>
-    <h2>Só esse elemento você vai ver</h2>
-    <div>
-      Essa é uma div
-    </div>
-    <button type="button" name="button" disabled>Botão</button>
+    <h1>O botão vai aparecer</h1>
   </body>
 </html>
