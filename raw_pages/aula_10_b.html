@@ -1,76 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title>Aula 10b</title>
     <script async type="text/javascript" src="/js/brython.js"></script>
     <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="/css/terminal.min.css" />
-    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <meta charset="utf-8">
+    <title>Aula 10a</title>
     <style media="screen">
-      .disabled {
-        pointer-events: none;
-        cursor: default;
+      body * {
+        visibility: hidden;
+      }
+      body h2,
+      body button {
+        visibility: visible;
       }
     </style>
     <script type="text/python">
-      from browser import bind, window, timer
+      from browser import document, timer, html
       from functools import partial
-      from random import randint
 
-      def open_with_delay(href):
-         window.open(href, '_self')
+      def set_value(event):
+          p = html.P('Cliqueiiiiiiiiiii')
+          p.style.visibility = 'visible'
+          document <= p
 
-      @bind('a', 'click')
-      def delay(event):
-          event.preventDefault()
-          href = event.currentTarget.href
+      def delay_to_show_elements(element):
+          element.style.visibility = 'visible'
+
+      def delay_to_enable_button():
+          element = document.select_one('button').disabled = False
+
+      for i, element in enumerate(document.select('h1'), 1):
           timer.set_timeout(
-              partial(open_with_delay, href),
-              randint(0, 3000)
+              partial(delay_to_show_elements, element), i * 2000
           )
+      timer.set_timeout(delay_to_enable_button, 6000)
+
+      document.select_one('button').bind('click', set_value)
     </script>
   </head>
   <body onload="brython()">
-    <div class="simple-grid">
-      <header>
-        <div class="container">
-          <div class="terminal-nav">
-            <div class="terminal-logo" id="header">
-              <div class="logo terminal-prompt">
-                <a class="no-style" href="/">Olar Jovis :)</a>
-              </div>
-            </div>
-            <nav class="terminal-menu">
-              <ul>
-                <li>
-                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
-                </li>
-                <li>
-                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
-                </li>
-                <li>
-                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
-                </li>
-                <li>
-                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-      <div class="body_b">
-        <h3>Links com delay randômicos entre 0 e 3 segundos</h3>
-        <ul>
-          <li><a href="#">Mesma página</a></li>
-          <li><a href="/">Home</a></li>
-          <li><a href="diabao.html">Diabão</a></li>
-          <li><a href="unicornio.html">Unicónio</a></li>
-          <li><a class="disabled" href="aula_10.html">Delays</a></li>
-        </ul>
-      </div>
+    <h1>Bem vindo ao site invisível</h1>
+    <h1>Sério, é mesmo invisível</h1>
+    <h2>Só esse elemento você vai ver</h2>
+    <div>
+      Essa é uma div
     </div>
+    <button type="button" name="button" disabled>Botão</button>
   </body>
 </html>
