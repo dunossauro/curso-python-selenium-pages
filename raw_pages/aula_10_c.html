@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Aula 10b</title>
+    <title>Aula 10c</title>
     <script async type="text/javascript" src="/js/brython.js"></script>
     <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
     <link rel="stylesheet" href="/css/normalize.css" />
@@ -26,8 +26,11 @@
       }
 
       def enable_input(input_name):
-          document.select_one(f'input[name={input_name}]').disabled = False
-          document.select_one(f'input[name={input_name}]').value = f'disponível'
+          input_element = document.select_one(f'input[name={input_name}]')
+          if 'senha' in input_name:
+              input_element.type = 'password'
+          input_element.disabled = False
+          input_element.value = f'disponível'
           if input_name == 'button':
               message = f'Clique em input[name={input_name}]'
           else:
@@ -51,6 +54,8 @@
           document.select_one(
             'h4'
           ).text = f'Aguarde input[name={form_mapping[name_attr]}] estar disponível'
+
+      enable_input('nome')
     </script>
   </head>
   <body onload="brython()">
@@ -85,11 +90,11 @@
       <div class="body_b">
         <fieldset>
           <legend>Form da espera</legend>
-          <h4>Digite seu nome</h4>
+          <h4>Aguarde input[name="nome"]</h4>
           <form>
             <div class="form-group">
               <label for="nome">Nome</label>
-              <input type="text" name="nome" value="Entre com seu nome">
+              <input type="text" name="nome" value="bloqueado" disabled>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
