@@ -36,6 +36,7 @@ lista_explicacoes <= anchor_in_list('Aula 9a', 'aula_09_a.html')
 lista_explicacoes <= anchor_in_list('Aula 9b', 'aula_09_b.html')
 lista_explicacoes <= anchor_in_list('Aula 10a', 'aula_10_a.html')
 lista_explicacoes <= anchor_in_list('Aula 10b', 'aula_10_b.html')
+lista_explicacoes <= anchor_in_list('Aula 10c', 'aula_10_c.html')
 document['aside'] <= lista_explicacoes
 
 
