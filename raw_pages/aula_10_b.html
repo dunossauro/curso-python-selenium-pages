@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Aula 10b</title>
+    <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <style media="screen">
+      .disabled {
+        pointer-events: none;
+        cursor: default;
+      }
+    </style>
+    <script type="text/python">
+      from browser import bind, window, timer
+      from functools import partial
+      from random import randint
+
+      def open_with_delay(href):
+         window.open(href, '_self')
+
+      @bind('a', 'click')
+      def delay(event):
+          event.preventDefault()
+          href = event.currentTarget.href
+          timer.set_timeout(
+              partial(open_with_delay, href),
+              randint(0, 3000)
+          )
+    </script>
+  </head>
+  <body onload="brython()">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_b">
+        <h3>Links com delay randômicos entre 0 e 3 segundos</h3>
+        <ul>
+          <li><a href="#">Mesma página</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="diabao.html">Diabão</a></li>
+          <li><a href="unicornio.html">Unicónio</a></li>
+          <li><a class="disabled" href="aula_10.html">Delays</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
