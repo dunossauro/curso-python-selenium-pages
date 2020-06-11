@@ -3,7 +3,7 @@ from functools import partial
 from random import randint, choice
 
 
-def create_btn(where, text, classes):
+def create_btn(where, text, classes=''):
     document.select_one(where) <= html.BUTTON(
         text,
         Class=classes,
