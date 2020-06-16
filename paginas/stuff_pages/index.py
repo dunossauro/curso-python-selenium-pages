@@ -5,6 +5,8 @@ lista_aulas = html.UL()
 for n in range(3, 10):
     if n not in [8]:
         lista_aulas <= anchor_in_list(f'Aula {n}', f'aula_0{n}.html')
+
+
 document['aside'] <= html.H1('Páginas das aulas')
 document['aside'] <= lista_aulas
 paginas_praticar = html.UL()
@@ -40,6 +42,7 @@ lista_explicacoes <= anchor_in_list('Aula 10d', 'aula_10_d.html')
 lista_explicacoes <= anchor_in_list('Aula 11a', 'aula_11_a.html')
 lista_explicacoes <= anchor_in_list('Aula 11b', 'aula_11_b.html')
 lista_explicacoes <= anchor_in_list('Aula 11c', 'aula_11_c.html')
+lista_explicacoes <= anchor_in_list('Aula 11d', 'aula_11_d.html')
 document['aside'] <= lista_explicacoes
 
 
