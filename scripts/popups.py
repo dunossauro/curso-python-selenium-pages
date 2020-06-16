@@ -7,9 +7,13 @@ def alerts(event):
 
     window.alert('Isso é um alerta!!')
 
-    while not response and not name:
+    while not (response and name):
         name = window.prompt('Digite seu nome')
-        response = window.confirm('Esse é mesmo o seu nome?')
+        msg = 'Seu nome é vazio. Vamos refazer a operação'
+        if name:
+            msg = 'Esse é mesmo o seu nome?'
+
+        response = window.confirm(msg)
 
     document.select_one('.body_b') <= html.H1(f'Olar {name}')
     document.select_one('.body_b') <= html.BR()
