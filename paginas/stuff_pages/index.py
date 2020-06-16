@@ -1,7 +1,6 @@
 from browser import html, document
 from scripts.links import anchor_in_list
 
-
 lista_aulas = html.UL()
 for n in range(3, 10):
     if n not in [8]:
@@ -39,6 +38,7 @@ lista_explicacoes <= anchor_in_list('Aula 10b', 'aula_10_b.html')
 lista_explicacoes <= anchor_in_list('Aula 10c', 'aula_10_c.html')
 lista_explicacoes <= anchor_in_list('Aula 10d', 'aula_10_d.html')
 lista_explicacoes <= anchor_in_list('Aula 11a', 'aula_11_a.html')
+lista_explicacoes <= anchor_in_list('Aula 11b', 'aula_11_b.html')
 document['aside'] <= lista_explicacoes
 
 

@@ -17,3 +17,6 @@ def alerts(event):
 
     document.select_one('.body_b') <= html.H1(f'Olar {name}')
     document.select_one('.body_b') <= html.BR()
+
+def popup(event):
+    window.open('popup.html', 'popup', 'scrollbars=no')
