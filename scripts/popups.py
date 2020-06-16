@@ -20,3 +20,7 @@ def alerts(event):
 
 def popup(event):
     window.open('popup.html', 'popup', 'scrollbars=no')
+
+
+def tabs(event):
+    window.open('#', '_blank')
