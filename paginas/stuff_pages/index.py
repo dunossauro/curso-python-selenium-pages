@@ -79,7 +79,7 @@ document['main'] <= palestras_youtube
 
 
 lista_exercicios = html.UL()
-for n in range(1, 12):
+for n in range(1, 13):
     formated_n = f'0{n}' if n < 10 else n
     lista_exercicios <= anchor_in_list(
         f'Exercício {formated_n}', f'exercicio_{formated_n}.html'

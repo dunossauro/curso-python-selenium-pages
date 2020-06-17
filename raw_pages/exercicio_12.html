@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercício 12</title>
+    <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/terminal.min.css" />
+    <link rel="stylesheet" href="/css/simple_grid.css" />
+    <script type="text/python">
+      from browser import document, bind, window
+
+      @bind('.from-group > input', 'focus')
+      def show_prompt(event):
+         target_name = event.target.name
+         label_text = document.select_one(f'label[for={target_name}]').text
+         prompt_text = window.prompt(f'Digite seu {label_text}')
+
+         if prompt_text:
+             event.target.value = prompt_text
+
+      @bind('form', 'submit')
+      def open_popup(event):
+          query_string = '?'
+          for element in document.select('.from-group > input'):
+              query_string += f'{element.name}={element.value}&'
+
+          window.open(
+              'popup.html' + query_string, 'popup', 'scrollbars=no'
+          )
+    </script>
+  </head>
+  <body onload="brython(1)">
+    <div class="simple-grid">
+      <header>
+        <div class="container">
+          <div class="terminal-nav">
+            <div class="terminal-logo" id="header">
+              <div class="logo terminal-prompt">
+                <a class="no-style" href="/">Olar Jovis :)</a>
+              </div>
+            </div>
+            <nav class="terminal-menu">
+              <ul>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://www.youtube.com/eduardomendes">Youtube</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://apoia.se/livedepython">Apoia.se</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://dunossauro.github.io/curso-python-selenium">Curso</a>
+                </li>
+                <li>
+                  <a class="menu-item" target="_blank" href="https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md">CDC</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div class="body_b">
+        <fieldset>
+          <legend>Form dos prompts</legend>
+          <form>
+            <div class="from-group">
+              <label for="nome">Nome</label>
+              <input type="text" name="nome" value="" required>
+            </div>
+            <div class="from-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" value="" required>
+            </div>
+            <div class="from-group">
+              <label for="signo">Signo</label>
+              <input type="text" name="signo" value="" required>
+            </div>
+            <br>
+            <input class="btn btn-primary btn-block" type="submit" value="Enviar">
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>

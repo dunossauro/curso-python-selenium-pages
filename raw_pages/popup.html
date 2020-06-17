@@ -3,11 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>popup</title>
+    <script type="text/javascript" src="/js/brython.js"></script>
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/terminal.min.css" />
     <link rel="stylesheet" href="/css/simple_grid.css" />
+    <script type="text/python">
+      from browser import document, html
+
+      if str(document.query) != '?=':
+        document['content'] <= html.BR()
+        document['content'] <= html.H1('Nome: ' + document.query['nome'])
+        document['content'] <= html.BR()
+        document['content'] <= html.H1('Email: ' + document.query['email'])
+        document['content'] <= html.BR()
+        document['content'] <= html.H1('Signo: ' + document.query['signo'])
+    </script>
   </head>
-  <body>
+  <body onload="brython()">
     <div class="simple-grid">
       <header>
         <div class="container">
@@ -36,7 +48,7 @@
           </div>
         </div>
       </header>
-      <div class="body_b">
+      <div id="content" class="body_b">
         <h1>Popup</h1>
       </div>
     </div>
