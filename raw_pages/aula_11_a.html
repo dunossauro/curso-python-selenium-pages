@@ -4,21 +4,35 @@
     <meta charset="utf-8">
     <title>Aula 11a</title>
     <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/terminal.min.css" />
     <link rel="stylesheet" href="/css/simple_grid.css" />
     <script type="text/python">
-        from browser import document, window
+        from browser import document, window, timer
         from scripts.popups import alerts
+
+        def alert():
+          window.alert('Isso é um alerta')
+
+
         document.select_one('#all').bind('click', alerts)
+
         document.select_one('#alert').bind(
             'click',
-            lambda x: window.alert('Isso é um alerta')
+            lambda x: alert()
         )
+
+        document.select_one('#alertd').bind(
+            'click',
+            lambda x: timer.set_timeout(alert, 3000)
+        )
+
         document.select_one('#prompt').bind(
             'click',
             lambda x: window.prompt('Digite algo no prompt')
           )
+
         document.select_one('#confirm').bind(
             'click',
             lambda x: window.confirm('Isse é um confirm')
@@ -58,6 +72,8 @@
         <fieldset>
           <legend>Magia dos Alertas</legend>
           <button id="alert" class="btn btn-primary btn-block" type="button" name="button">Alert!</button>
+          <br>
+          <button id="alertd" class="btn btn-primary btn-block" type="button" name="button">Alert com delay!</button>
           <br>
           <button id="prompt" class="btn btn-primary btn-block" type="button" name="button">Prompt!</button>
           <br>

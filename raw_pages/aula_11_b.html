@@ -4,13 +4,19 @@
     <meta charset="utf-8">
     <title>Aula 11b</title>
     <script async type="text/javascript" src="/js/brython.js"></script>
+    <script async type="text/javascript" src="/js/brython_stdlib.js"></script>
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/terminal.min.css" />
     <link rel="stylesheet" href="/css/simple_grid.css" />
     <script type="text/python">
-        from browser import document
+        from browser import document, timer
+        from functools import partial
         from scripts.popups import popup
-        document.select_one('button').bind('click', popup)
+        document.select_one('#popup').bind('click', popup)
+        document.select_one('#popupd').bind(
+          'click',
+          lambda x: timer.set_timeout(partial(popup, x), 3000)
+        )
     </script>
   </head>
   <body onload="brython()">
@@ -45,7 +51,9 @@
       <div class="body_b">
         <fieldset>
           <legend>Uma nova janela</legend>
-          <button class="btn btn-primary btn-block" type="button" name="button">Pei!</button>
+          <button id="popup" class="btn btn-primary btn-block" type="button" name="button">Abrir Popup!</button>
+          <br>
+          <button id="popupd" class="btn btn-primary btn-block" type="button" name="button">Abrir Popup com delay!</button>
         </fieldset>
       </div>
     </div>
