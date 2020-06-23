@@ -8,9 +8,21 @@
     <link rel="stylesheet" href="/css/terminal.min.css" />
     <link rel="stylesheet" href="/css/simple_grid.css" />
     <script type="text/python">
-        from browser import document
+        from browser import document, window
         from scripts.popups import alerts
-        document.select_one('button').bind('click', alerts)
+        document.select_one('#all').bind('click', alerts)
+        document.select_one('#alert').bind(
+            'click',
+            lambda x: window.alert('Isso é um alerta')
+        )
+        document.select_one('#prompt').bind(
+            'click',
+            lambda x: window.prompt('Digite algo no prompt')
+          )
+        document.select_one('#confirm').bind(
+            'click',
+            lambda x: window.confirm('Isse é um confirm')
+        )
     </script>
   </head>
   <body onload="brython()">
@@ -45,7 +57,13 @@
       <div class="body_b">
         <fieldset>
           <legend>Magia dos Popups</legend>
-          <button class="btn btn-primary btn-block" type="button" name="button">Pei!</button>
+          <button id="alert" class="btn btn-primary btn-block" type="button" name="button">Alert!</button>
+          <br>
+          <button id="prompt" class="btn btn-primary btn-block" type="button" name="button">Prompt!</button>
+          <br>
+          <button id="confirm" class="btn btn-primary btn-block" type="button" name="button">Confirm!</button>
+          <br>
+          <button id="all" class="btn btn-primary btn-block" type="button" name="button">Tudo junto, AGORA!</button>
         </fieldset>
       </div>
     </div>
