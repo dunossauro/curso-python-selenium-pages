@@ -23,11 +23,19 @@ def card_elements(event):
     return card, primary, error
 
 
+def clear_form():
+    document.select_one('#todo-name').value = ''
+    document.select_one('#todo-desc').value = ''
+    document.select_one('#todo-next').checked = False
+
+
 def read_form():
     name = document.select_one('#todo-name').value,
     description = document.select_one('#todo-desc').value,
     check = document.select_one('#todo-next').checked
     valid = bool(name[0])
+
+    clear_form()
 
     if not valid:
         error_message()
@@ -42,8 +50,8 @@ def create_card(event):
     if valid:
         todo = document.select_one('#todo')
         card = html.DIV(Class='terminal-card')
-        card <= html.HEADER(name)
-        card <= html.DIV(desc)
+        card <= html.HEADER(name, Class='name')
+        card <= html.DIV(desc, Class='description')
         buttons = html.DIV(Class='buttons')
         do = html.BUTTON('Fazer', Class='btn btn-primary btn-ghost do')
         cancel = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
