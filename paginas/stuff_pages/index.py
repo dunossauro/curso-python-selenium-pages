@@ -61,14 +61,13 @@ aulas_youtube <= anchor_in_list('Aula 8 - Eventos p.II (ActionChains)', 'https:/
 aulas_youtube <= anchor_in_list('Aula 9 - Waits p.I', 'https://youtu.be/tMHf6GZ_y2A')
 aulas_youtube <= anchor_in_list('Aula 10 - Waits p.II (Expected Conditions)', 'https://youtu.be/aza1vaq0uns')
 aulas_youtube <= anchor_in_list('Aula 11 - Interagindo com Janelas, abas, alertas e frames', 'https://youtu.be/f7Goh4LpHdM')
-# aulas_youtube <= anchor_in_list('Aula 12 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 13 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 14 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 15 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 16 - ', '')
+aulas_youtube <= anchor_in_list('Aula 12 - Padrão Page Objects p.1', 'https://www.youtube.com/watch?v=WhZHZ_RYzxw')
+aulas_youtube <= anchor_in_list('Aula 13 - Padrão Page Objects p.2', 'https://www.youtube.com/watch?v=KM90nnkt-5w')
+aulas_youtube <= anchor_in_list('Aula 14 - Selenium Grid', 'https://www.youtube.com/watch?v=dnF5QbcBXRk')
+aulas_youtube <= anchor_in_list('Aula 15 - Selenium docker', 'https://www.youtube.com/watch?v=LC9rhxuoUtA')
+aulas_youtube <= anchor_in_list('Aula 16 - Splinter', 'https://www.youtube.com/watch?v=o3Yl2EdPFdQ')
+
 # aulas_youtube <= anchor_in_list('Aula 17 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 18 - ', '')
-# aulas_youtube <= anchor_in_list('Aula 19 - ', '')
 document['main'] <= aulas_youtube
 
 palestras_youtube = html.UL()
