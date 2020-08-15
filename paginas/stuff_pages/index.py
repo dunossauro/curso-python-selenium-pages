@@ -1,4 +1,4 @@
-from browser import html, document
+from browser import document, html
 from scripts.links import anchor_in_list
 
 lista_aulas = html.UL()
@@ -48,32 +48,80 @@ document['aside'] <= lista_explicacoes
 
 aulas_youtube = html.UL()
 document['main'] <= html.H1('Vídeos das aulas no youtube')
-aulas_youtube <= anchor_in_list('Aula 0 - Abertura', 'https://www.youtube.com/watch?v=PHHXksljGNA')
-aulas_youtube <= anchor_in_list('Aula 1a - Configurando ambiente (windows)', 'https://youtu.be/rVCKZcFHu4A')
-aulas_youtube <= anchor_in_list('Aula 1b - Configurando ambiente (linux)', 'https://youtu.be/XUeu4ZzQNUI')
-aulas_youtube <= anchor_in_list('Aula 2 - O que é selenium', 'https://youtu.be/wiA6PBz0Xu0')
-aulas_youtube <= anchor_in_list('Aula 3 - Minha primeira automação', 'https://youtu.be/Pax0jiAcTWs')
-aulas_youtube <= anchor_in_list('Aula 4 - Navegação e atributos', 'https://youtu.be/H6D8EFSGml0')
-aulas_youtube <= anchor_in_list('Aula 5 - Procurando e interagindo com elementos p.I', 'https://youtu.be/KqNTFAgDTrw')
-aulas_youtube <= anchor_in_list('Aula 6 - Procurando e interagindo com elementos p.II', 'https://youtu.be/wF3USvFE67Y')
-aulas_youtube <= anchor_in_list('Aula 7 - Eventos p.I (EventListener)', 'https://youtu.be/G5xdDPBKzkI')
-aulas_youtube <= anchor_in_list('Aula 8 - Eventos p.II (ActionChains)', 'https://youtu.be/xM8sNio2NkA')
-aulas_youtube <= anchor_in_list('Aula 9 - Waits p.I', 'https://youtu.be/tMHf6GZ_y2A')
-aulas_youtube <= anchor_in_list('Aula 10 - Waits p.II (Expected Conditions)', 'https://youtu.be/aza1vaq0uns')
-aulas_youtube <= anchor_in_list('Aula 11 - Interagindo com Janelas, abas, alertas e frames', 'https://youtu.be/f7Goh4LpHdM')
-aulas_youtube <= anchor_in_list('Aula 12 - Padrão Page Objects p.1', 'https://www.youtube.com/watch?v=WhZHZ_RYzxw')
-aulas_youtube <= anchor_in_list('Aula 13 - Padrão Page Objects p.2', 'https://www.youtube.com/watch?v=KM90nnkt-5w')
-aulas_youtube <= anchor_in_list('Aula 14 - Selenium Grid', 'https://www.youtube.com/watch?v=dnF5QbcBXRk')
-aulas_youtube <= anchor_in_list('Aula 15 - Selenium docker', 'https://www.youtube.com/watch?v=LC9rhxuoUtA')
-aulas_youtube <= anchor_in_list('Aula 16 - Splinter', 'https://www.youtube.com/watch?v=o3Yl2EdPFdQ')
-
-# aulas_youtube <= anchor_in_list('Aula 17 - ', '')
+aulas_youtube <= anchor_in_list(
+    'Aula 0 - Abertura', 'https://www.youtube.com/watch?v=PHHXksljGNA'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 1a - Configurando ambiente (windows)', 'https://youtu.be/rVCKZcFHu4A'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 1b - Configurando ambiente (linux)', 'https://youtu.be/XUeu4ZzQNUI'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 2 - O que é selenium', 'https://youtu.be/wiA6PBz0Xu0'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 3 - Minha primeira automação', 'https://youtu.be/Pax0jiAcTWs'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 4 - Navegação e atributos', 'https://youtu.be/H6D8EFSGml0'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 5 - Procurando e interagindo com elementos p.I',
+    'https://youtu.be/KqNTFAgDTrw',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 6 - Procurando e interagindo com elementos p.II',
+    'https://youtu.be/wF3USvFE67Y',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 7 - Eventos p.I (EventListener)', 'https://youtu.be/G5xdDPBKzkI'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 8 - Eventos p.II (ActionChains)', 'https://youtu.be/xM8sNio2NkA'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 9 - Waits p.I', 'https://youtu.be/tMHf6GZ_y2A'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 10 - Waits p.II (Expected Conditions)',
+    'https://youtu.be/aza1vaq0uns',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 11 - Interagindo com Janelas, abas, alertas e frames',
+    'https://youtu.be/f7Goh4LpHdM',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 12 - Padrão Page Objects p.1',
+    'https://www.youtube.com/watch?v=WhZHZ_RYzxw',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 13 - Padrão Page Objects p.2',
+    'https://www.youtube.com/watch?v=KM90nnkt-5w',
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 14 - Selenium Grid', 'https://www.youtube.com/watch?v=dnF5QbcBXRk'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 15 - Selenium docker', 'https://www.youtube.com/watch?v=LC9rhxuoUtA'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 16 - Splinter', 'https://www.youtube.com/watch?v=o3Yl2EdPFdQ'
+)
+aulas_youtube <= anchor_in_list(
+    'Aula 17 - Selene', 'https://youtu.be/EF46F_nR79c'
+)
 document['main'] <= aulas_youtube
 
 palestras_youtube = html.UL()
 document['main'] <= html.H1('Palestras durante o curso')
-palestras_youtube <= anchor_in_list('Vamos falar de QA - Mariana Elisa', 'https://www.youtube.com/watch?v=TOt6YvONKNA')
-palestras_youtube <= anchor_in_list('Conhecendo Xpath - Renne Rocha', 'https://youtu.be/vuLNc2yCNYk')
+palestras_youtube <= anchor_in_list(
+    'Vamos falar de QA - Mariana Elisa',
+    'https://www.youtube.com/watch?v=TOt6YvONKNA',
+)
+palestras_youtube <= anchor_in_list(
+    'Conhecendo Xpath - Renne Rocha', 'https://youtu.be/vuLNc2yCNYk'
+)
 document['main'] <= palestras_youtube
 
 
@@ -88,14 +136,30 @@ document['main'] <= lista_exercicios
 
 resolucao = html.UL()
 document['main'] <= html.H1('Resolução dos exercícios')
-resolucao <= anchor_in_list('Live de resolução de exercícios 1', 'https://youtu.be/X73Iyq1M688')
-resolucao <= anchor_in_list('Live de resolução de exercícios 2', 'https://youtu.be/iLSgkWdepfA')
+resolucao <= anchor_in_list(
+    'Live de resolução de exercícios 1', 'https://youtu.be/X73Iyq1M688'
+)
+resolucao <= anchor_in_list(
+    'Live de resolução de exercícios 2', 'https://youtu.be/iLSgkWdepfA'
+)
 document['main'] <= resolucao
 
 links = html.UL()
 document['main'] <= html.H1('Links legais')
-links <= anchor_in_list('Código de conduta', 'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md')
-links <= anchor_in_list('Slides De todas as aulas', 'https://github.com/dunossauro/curso-python-selenium/tree/master/slides')
-links <= anchor_in_list('Repositório do curso', 'https://github.com/dunossauro/curso-python-selenium/')
-links <= anchor_in_list('Código das páginas', 'https://github.com/dunossauro/curso-python-selenium-pages/')
+links <= anchor_in_list(
+    'Código de conduta',
+    'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md',
+)
+links <= anchor_in_list(
+    'Slides De todas as aulas',
+    'https://github.com/dunossauro/curso-python-selenium/tree/master/slides',
+)
+links <= anchor_in_list(
+    'Repositório do curso',
+    'https://github.com/dunossauro/curso-python-selenium/',
+)
+links <= anchor_in_list(
+    'Código das páginas',
+    'https://github.com/dunossauro/curso-python-selenium-pages/',
+)
 document['main'] <= links
