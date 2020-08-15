@@ -1,6 +1,7 @@
-from string import ascii_lowercase as alpha
 from random import choice
-from browser import html, document
+from string import ascii_lowercase as alpha
+
+from browser import document, html
 from scripts.links import anchor_in_list
 
 title = ''.join(choice(alpha) for n in range(10))

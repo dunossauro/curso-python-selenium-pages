@@ -1,5 +1,5 @@
 """Script de build, para montar o site."""
-from template_engine import clean_and_copy, build_path
+from template_engine import build_path, clean_and_copy
 
 clean_and_copy()
 

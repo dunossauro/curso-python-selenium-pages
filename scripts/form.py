@@ -17,17 +17,11 @@ Example:
 
 """
 from browser import document
-from browser.html import DIV, LABEL, INPUT, FIELDSET, LEGEND, FORM
+from browser.html import DIV, FIELDSET, FORM, INPUT, LABEL, LEGEND
 
 
 def _create_input(
-    name,
-    type,
-    label='',
-    Class='',
-    text='',
-    value='',
-    required=False,
+    name, type, label='', Class='', text='', value='', required=False,
 ):
     """
     Cria um input completo.

@@ -1,6 +1,5 @@
-from browser import html, document
+from browser import document, html
 from scripts.links import anchor_in_list
-
 
 lista_exercicios = html.UL()
 for n in range(1, 11):

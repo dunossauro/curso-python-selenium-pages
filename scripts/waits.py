@@ -1,25 +1,25 @@
-from browser import document, bind, html, timer
 from functools import partial
-from random import randint, choice
+from random import choice, randint
+
+from browser import bind, document, html, timer
 
 
 def create_btn(where, text, classes=''):
     document.select_one(where) <= html.BUTTON(
-        text,
-        Class=classes,
-        id='request',
-        type='button',
-        name='button'
+        text, Class=classes, id='request', type='button', name='button'
     )
 
 
 def exercice_08():
     r_value = randint(1, 50)
+
     def btn_creates(index):
         btn = document.select('#request')
         if btn:
             btn[0].remove()
-        classes = f'btn btn-{choice(["default", "primary", "error"])} btn-ghost'
+        classes = (
+            f'btn btn-{choice(["default", "primary", "error"])} btn-ghost'
+        )
         if index == r_value:
             classes += ' selenium'
             print('selenium')
@@ -33,6 +33,7 @@ def exercice_08():
     for index in range(0, 51):
         timer.set_timeout(partial(btn_creates, index), index * 500)
 
+
 def wait_load(aula):
     document.select_one('#request').bind('click', create_progress_bar)
     document.select_one('br').remove()
@@ -42,6 +43,7 @@ def wait_load(aula):
         document.select_one('#request').classList.remove('btn-error')
         document.select_one('#request').classList.remove('unclick')
         document.select_one('#request').classList.add('btn-primary')
+
 
 def manage_progress(id, percent):
     bar = document.select_one(id)
@@ -57,9 +59,7 @@ def manage_progress(id, percent):
         progress_bar.clear()
         progress_bar <= html.BR()
         alert = html.DIV(
-            'Carregamento concluído',
-            ID='finished',
-            Class='terminal-alert'
+            'Carregamento concluído', ID='finished', Class='terminal-alert'
         )
         alert.style.color = '#08D10E'
         alert.style.borderColor = '#08D10E'
@@ -73,10 +73,12 @@ def create_progress_bar(event):
             'style': {'width': '0%'},
             'data-filled': 'Loading 0%',
             'id': 'bar',
-            }
+        }
         progress = html.DIV(Class='progress-bar progress-bar-show-percent')
         progress <= html.DIV(**bar_attrs)
         document.select_one('#progress-bar') <= progress
 
         for value in range(0, 101):
-          timer.set_timeout(partial(manage_progress, '#bar', value), value * 50)
+            timer.set_timeout(
+                partial(manage_progress, '#bar', value), value * 50
+            )

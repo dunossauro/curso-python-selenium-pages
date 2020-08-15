@@ -12,7 +12,7 @@ Example:
 
 """
 from browser import document
-from browser.html import NAV, DIV, A, UL, LI
+from browser.html import DIV, LI, NAV, UL, A
 
 
 def page_load():
@@ -63,7 +63,7 @@ def header():
     )
     cdc = nav_element(
         'CDC',
-        'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md', # NOQA
+        'https://github.com/dunossauro/curso-python-selenium/blob/master/cdc.md',  # NOQA
     )
 
     logo <= link_logo

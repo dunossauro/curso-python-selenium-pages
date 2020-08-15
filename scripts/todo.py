@@ -30,8 +30,8 @@ def clear_form():
 
 
 def read_form():
-    name = document.select_one('#todo-name').value,
-    description = document.select_one('#todo-desc').value,
+    name = (document.select_one('#todo-name').value,)
+    description = (document.select_one('#todo-desc').value,)
     check = document.select_one('#todo-next').checked
     valid = bool(name[0])
 
@@ -54,7 +54,9 @@ def create_card(event):
         card <= html.DIV(desc, Class='description')
         buttons = html.DIV(Class='buttons')
         do = html.BUTTON('Fazer', Class='btn btn-primary btn-ghost do')
-        cancel = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
+        cancel = html.BUTTON(
+            'Cancelar', Class='btn btn-error btn-ghost cancel'
+        )
 
         do.bind('click', doing_card)
         cancel.bind('click', cancel_card)
@@ -102,7 +104,6 @@ def back_card(event):
     document.select_one('#todo') <= card
 
 
-
 def done_card(event):
     card, primary, error = card_elements(event)
     error.remove()
@@ -116,9 +117,7 @@ def redo(event):
     card, primary, error = card_elements(event)
     iternal_div = card.select('div')[1]
 
-    error = html.BUTTON(
-        'Cancelar', Class='btn btn-error btn-ghost cancel'
-    )
+    error = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
     error.bind('click', cancel_card)
     iternal_div <= error
 

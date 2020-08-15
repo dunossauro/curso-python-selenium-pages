@@ -1,4 +1,4 @@
-from browser import html, document
+from browser import document, html
 from scripts.links import anchor_in_list
 
 document['main'] <= html.H1('Você está no exercício 3')

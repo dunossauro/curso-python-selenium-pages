@@ -23,16 +23,11 @@ login_form = {
 }
 
 if not document.query.getvalue('nome'):
-    document['main'] <= html.P(
-        'Você deve preencher o forumlário e enviar'
-    )
+    document['main'] <= html.P('Você deve preencher o forumlário e enviar')
     form(login_form)
 else:
     document['main'] <= html.P(
         'Agora você deve checar se a url bate com o resultado'
     )
 
-    get_query_string(
-        ['nome', 'email', 'senha', 'telefone'],
-        'main'
-    )
+    get_query_string(['nome', 'email', 'senha', 'telefone'], 'main')

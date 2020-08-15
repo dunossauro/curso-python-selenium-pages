@@ -1,7 +1,6 @@
-from browser import html, document
+from browser import document, html
 from browser.local_storage import storage
 from scripts.arts import art
-
 
 if storage['local'] != 'fim':
     storage['local'] = 'fim'

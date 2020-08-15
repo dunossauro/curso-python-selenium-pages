@@ -1,5 +1,5 @@
 from browser import document
-from browser.html import UL, LI, NAV, A
+from browser.html import LI, NAV, UL, A
 
 
 def list_link(text, link):

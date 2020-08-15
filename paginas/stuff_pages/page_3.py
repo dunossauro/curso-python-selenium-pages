@@ -1,4 +1,4 @@
-from browser import html, document
+from browser import document, html
 from browser.local_storage import storage
 from scripts.links import anchor_in_list
 

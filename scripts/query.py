@@ -1,5 +1,5 @@
 from browser import document
-from browser.html import TEXTAREA, FIELDSET, DIV, LEGEND
+from browser.html import DIV, FIELDSET, LEGEND, TEXTAREA
 
 
 def result():

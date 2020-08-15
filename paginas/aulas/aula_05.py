@@ -22,7 +22,5 @@ login_form = {
     'inputs': inputs,
 }
 
-get_query_string(
-    ['nome', 'email', 'senha', 'telefone']
-)
+get_query_string(['nome', 'email', 'senha', 'telefone'])
 form(login_form)

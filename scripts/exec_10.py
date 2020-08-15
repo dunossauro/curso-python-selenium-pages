@@ -1,6 +1,8 @@
-from browser import document, html, timer
-from random import randint
 from functools import partial
+from random import randint
+
+from browser import document, html, timer
+
 
 def error_message():
     if not document.select('.terminal-alert-error'):
@@ -25,8 +27,8 @@ def card_elements(event):
 
 
 def read_form():
-    name = document.select_one('#todo-name').value,
-    description = document.select_one('#todo-desc').value,
+    name = (document.select_one('#todo-name').value,)
+    description = (document.select_one('#todo-desc').value,)
     check = document.select_one('#todo-next').checked
     valid = bool(name[0])
 
@@ -37,11 +39,13 @@ def read_form():
 
     return name, description, check, valid
 
+
 def create_card_timer(checked, todo, card):
     if checked:
         todo.insertBefore(card, todo.firstChild)
     else:
         todo <= card
+
 
 def create_card(event):
     name, desc, checked, valid = read_form()
@@ -52,7 +56,9 @@ def create_card(event):
         card <= html.DIV(desc)
         buttons = html.DIV(Class='buttons')
         do = html.BUTTON('Fazer', Class='btn btn-primary btn-ghost do')
-        cancel = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
+        cancel = html.BUTTON(
+            'Cancelar', Class='btn btn-error btn-ghost cancel'
+        )
 
         do.bind('click', doing_card)
         cancel.bind('click', cancel_card)
@@ -62,8 +68,7 @@ def create_card(event):
         card <= buttons
 
         timer.set_timeout(
-            partial(create_card_timer, checked, todo, card),
-            randint(1, 3000)
+            partial(create_card_timer, checked, todo, card), randint(1, 3000)
         )
 
 
@@ -104,7 +109,6 @@ def back_card(event):
     document.select_one('#todo') <= card
 
 
-
 def done_card(event):
     card, primary, error = card_elements(event)
     error.remove()
@@ -118,9 +122,7 @@ def redo(event):
     card, primary, error = card_elements(event)
     iternal_div = card.select('div')[1]
 
-    error = html.BUTTON(
-        'Cancelar', Class='btn btn-error btn-ghost cancel'
-    )
+    error = html.BUTTON('Cancelar', Class='btn btn-error btn-ghost cancel')
     error.bind('click', cancel_card)
     iternal_div <= error
 

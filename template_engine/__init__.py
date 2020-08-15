@@ -11,7 +11,9 @@ def build_path(path):
         make_page(
             page.replace('.py', ''),
             {
-                'title': page.replace('py', 'html') if not 'index' in page else 'Curso de selenium com Python',
+                'title': page.replace('py', 'html')
+                if not 'index' in page
+                else 'Curso de selenium com Python',
                 'type': page,
                 'path': path.split('/')[-1],
                 'brython_file': page.replace('.py', ''),
@@ -60,7 +62,7 @@ def make_page(page_name, jinja_vars) -> NoReturn:
 def clean_and_copy(
     build_path='site',
     paths_to_copy=['css', 'js', 'scripts'],
-    raw_pages='raw_pages'
+    raw_pages='raw_pages',
 ):
     """Limpa o `build_path` e o cria de novo e adiciona os `paths_to_copy`."""
     if exists(build_path):
