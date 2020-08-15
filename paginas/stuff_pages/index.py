@@ -103,7 +103,7 @@ aulas_youtube <= anchor_in_list(
     'Aula 14 - Selenium Grid', 'https://www.youtube.com/watch?v=dnF5QbcBXRk'
 )
 aulas_youtube <= anchor_in_list(
-    'Aula 15 - Selenium docker', 'https://www.youtube.com/watch?v=LC9rhxuoUtA'
+    'Aula 15 - Selenium docker', 'https://youtu.be/k8GKoTpnDF0'
 )
 aulas_youtube <= anchor_in_list(
     'Aula 16 - Splinter', 'https://www.youtube.com/watch?v=o3Yl2EdPFdQ'
