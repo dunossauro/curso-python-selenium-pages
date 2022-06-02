@@ -38,7 +38,7 @@ def wait_load(aula):
     document.select_one('#request').bind('click', create_progress_bar)
     document.select_one('br').remove()
     document.select_one('.terminal-alert-error').remove()
-    if aula == '09b':
+    if aula == '09':
         document.select_one('#request').style.pointerEvents = 'visible'
         document.select_one('#request').classList.remove('btn-error')
         document.select_one('#request').classList.remove('unclick')
